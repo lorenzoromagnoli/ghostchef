@@ -5,6 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var language = require('@google-cloud/language')({
+  projectId: 'foodProcessor',
+  keyFilename: '/apikey/foodProcessor-16cdf8c1cfa6.json'
+});
+
 
 var express = require('express');
 var path = require('path');

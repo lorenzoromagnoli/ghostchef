@@ -1,5 +1,5 @@
 <!-- <input (keyup)="onUpdate($event)" (click)="onUpdate($event)"> -->
-  <h1>ciaone</h1>
+<div id="editor">
   <span *ngFor="let word of words; let i = index">
 
     <span
@@ -16,5 +16,5 @@
     <span class="autocomplete" [hidden]="i!=focussedWordPosition">{{word}}</span>
 
   </span>
-
+</div>
 {{focussedWordPosition}}

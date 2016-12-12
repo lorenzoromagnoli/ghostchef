@@ -1,0 +1,13 @@
+  #editor {
+      background-color: white;
+      margin: auto;
+      width: 80%;
+      height: 70%;
+      font-size: 2em;
+      display: block;
+      padding: 1em 2em;
+  }
+
+  .autocomplete{
+    background-color: #aaaaaa;
+  }
