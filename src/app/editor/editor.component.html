@@ -1,0 +1,20 @@
+<!-- <input (keyup)="onUpdate($event)" (click)="onUpdate($event)"> -->
+  <h1>ciaone</h1>
+  <span *ngFor="let word of words; let i = index">
+
+    <span
+      class="word"
+      contenteditable="true"
+      (keydown)="handleKeyEvent($event,'key',i)"
+      (keydown.Enter)="handleKeyEvent( $event, 'Enter', i )"
+      (keydown.ArrowLeft)="handleKeyEvent( $event, 'Arrow Left', i )"
+      (keydown.ArrowUp)="handleKeyEvent( $event, 'Arrow Up', i )"
+      (keydown.ArrowRight)="handleKeyEvent( $event, 'Arrow Right', i )"
+      (keydown.ArrowDown)="handleKeyEvent( $event, 'Arrow Down', i )"
+      (keydown.Space)="handleKeyEvent( $event, 'Space', i )">{{word}}</span>
+
+    <span class="autocomplete" [hidden]="i!=focussedWordPosition">{{word}}</span>
+
+  </span>
+
+{{focussedWordPosition}}
