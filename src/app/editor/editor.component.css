@@ -11,3 +11,7 @@
   .autocomplete{
     background-color: #aaaaaa;
   }
+
+  .word.machine{
+    border-bottom: 4px solid yellow;
+  }

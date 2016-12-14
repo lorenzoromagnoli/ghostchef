@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var language = require('@google-cloud/language')({
   projectId: 'foodProcessor',
-  keyFilename: '/apikey/foodProcessor-16cdf8c1cfa6.json'
+  keyFilename: 'apikey/foodProcessor-16cdf8c1cfa6.json'
 });
 
 
@@ -19,6 +19,22 @@ var app = express();
 app.set('port', 3000);
 
 app.use(express.static(path.join(__dirname, 'dist')));
+
+app.post('/understand', function (req, res) {
+  sentence=req.query.sentence;
+  console.log(sentence);
+  language.annotate(sentence, callback);
+
+  function callback(err, entities, apiResponse) {
+    if (err){
+      res.send(err);
+      console.log(err);
+    }
+    else{
+      res.send(entities);
+    }
+  }
+});
 
 // Listen for requests
 var server = app.listen(app.get('port'), function() {
