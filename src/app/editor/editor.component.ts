@@ -1,17 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Word } from './word';
+import { FoodDataService } from '../services/food-data.service';
+
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.css']
+  styleUrls: ['./editor.component.css'],
+  providers: [FoodDataService]
 })
 
 
-export class EditorComponent {
+export class EditorComponent implements OnInit {
 
-  constructor() {
+  constructor(private foodDataService: FoodDataService) {
+    this.foodDataService = foodDataService;
   }
+
   // id = 1;
   text = '';
   words: Word[] = [];
@@ -67,12 +72,20 @@ export class EditorComponent {
     this.nothingHappeningTimer = window.setInterval(function() {
       console.log("restarted interval");
       this.getComputeraction()
+
     }.bind(this), this.timetowait);
   }
 
   getComputeraction() {
+
+    //try to understand the sentence
+    if(this.words.length>0){
+      this.foodDataService.understandWords(this.words[0].word).then(data => {
+        console.log("got data",data);
+      });
+    }
+
     this.addAWord("ingredient", "ingredient", "machine", getRandom(0, 3));
-    console.log("something you should repeat");
   }
 
   addAWord(word, type, author, index) {
@@ -82,7 +95,18 @@ export class EditorComponent {
 
   ngOnInit() {
     console.log("started");
+    this.foodDataService.getAllFoods().then(data => {
+      console.log("got data",data);
+    });
+
   }
+
+  getFoodbyName(){
+    this.foodDataService.getFood("zucchini").then(data => {
+      console.log("got data",data);
+    });
+  }
+
   nothingHappeningTimer = window.setInterval(this.getComputeraction.bind(this), this.timetowait);
 
 }

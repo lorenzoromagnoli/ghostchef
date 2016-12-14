@@ -15,10 +15,31 @@ var express = require('express');
 var path = require('path');
 var app = express();
 
+var allFood;
+var fs = require('fs');
+
+fs.readFile(path.normalize(__dirname + '/src/data/lorenzo.json'), function (err, data) {
+  if (err) {
+    throw err;
+  }
+  console.log(data.toString());
+  allFood=JSON.parse(data.toString());
+});
+
+
+
 // Define the port to run on
 app.set('port', 3000);
 
 app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('/api',function(req,res){
+  res.send("{'name':'ciao'}");
+})
+app.get('/allfood',function(req,res){
+  res.json(allFood);
+})
+
 
 app.post('/understand', function (req, res) {
   sentence=req.query.sentence;
