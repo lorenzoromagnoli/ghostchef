@@ -1,0 +1,33 @@
+{
+  "ingredients": [{
+    "zucchini" : {
+      "type": "vegetable",
+      "match": [{
+        "name": "mozzarella",
+        "type": ["rich"]
+      }, {
+        "name": "tomato",
+        "type": ["fresh"]
+      }, {
+        "name": "pork",
+        "type": ["rich"]
+      }, {
+        "name": "mint",
+        "type": ["fresh"]
+      }, {
+        "name": "shrimp",
+        "type": ["rich"]
+      }, {
+        "name": "white_wine",
+        "type": ["taste"]
+      }],
+      "preparation": ["grilled", "boiled", "pickled", "stuffed"]
+    }}
+  ],
+
+  "parameter":[
+    "reachness",
+    "freshness"
+  ]
+
+}
