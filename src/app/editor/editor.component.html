@@ -21,7 +21,8 @@
           (keydown.BackSpace)="handleKeyEvent( $event, 'BackSpace', i )"
           (blur)="handleKeyEvent( $event, 'Blur', i )"
           (click)="handleKeyEvent( $event, 'Click', i )"
-          [ngClass]="{'entity': word.isEntity }"
+          [ngClass]="{'entity': word.isEntity,'attribute': word.isAttribute }"
+
             >{{word.word}}</span>
 
         <!-- <span class="autocomplete" [hidden]="i!=focussedWordPosition">{{word}}</span> -->

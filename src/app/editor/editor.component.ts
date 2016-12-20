@@ -142,23 +142,35 @@ export class EditorComponent implements OnInit {
           entities.push(entity);
         }
       }
-      //reset all the info about entities in the text
+      //reset all the info about entities and attributes in the text
       for (var j = 0; j < this.words.length; j++) {
         this.words[j].isEntity = false;
+        this.words[j].isAttribute=false;
+        this.words[j].attributes=[];
       }
       //add tag of entities to the words in the array
       for (var i = 0; i < entities.length; i++) {
         for (var j = 0; j < this.words.length; j++) {
           if (this.words[j].word.trim() == entities[i].name.trim()) {
-            console.log(entities[i].name);
+            //console.log(entities[i].name);
             this.words[j].isEntity = true;
           }
         }
       }
 
       //get all the entities from the response json
-      var tags = [];
-      console.log(response.entities);
+      //var tokens = [];
+      //console.log(response.tokens);
+      for(var i=0; i<response.tokens.length; i++){
+      //  console.log(response.tokens[i].dependencyEdge.label);
+        if (response.tokens[i].dependencyEdge.label=="AMOD"||response.tokens[i].dependencyEdge.label=="ATTR"){
+          this.words[response.tokens[i].dependencyEdge.headTokenIndex].attributes.push(response.tokens[i].text);
+          this.words[i].isAttribute=true;
+      //    console.log(this.words[i].word , this.words[response.tokens[i].dependencyEdge.headTokenIndex]);
+          //console.log(this.words[response.tokens[i].dependencyEdge.headTokenIndex].attributes);
+        }
+        console.log(this.words[i]);
+      }
     });
   }
 

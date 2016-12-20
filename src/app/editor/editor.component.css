@@ -15,6 +15,11 @@
     display: inline-block;
   }
 
+
+
+  .word.attribute{
+    border-bottom: 2px dashed yellow;
+  }
   .word.entity{
     border-bottom: 2px solid yellow;
   }
