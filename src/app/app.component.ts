@@ -7,5 +7,5 @@ import { Word } from './editor/word';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'what should we eat today?';
 }

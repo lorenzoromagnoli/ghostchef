@@ -1,17 +1,30 @@
   #editor {
-      background-color: white;
       margin: auto;
-      width: 80%;
-      height: 70%;
       font-size: 2em;
       display: block;
-      padding: 1em 2em;
+      min-height: 50px;
+      background-color: #eee;
   }
 
   .autocomplete{
     background-color: #aaaaaa;
   }
 
+  .word{
+    min-width: 40px;
+    display: inline-block;
+  }
+
+  .word.entity{
+    border-bottom: 2px solid yellow;
+  }
+
   .word.machine{
-    border-bottom: 4px solid yellow;
+    border-bottom: 2px solid green;
+  }
+
+  .pauseButton{
+    .hidden{
+    display: none;
+    }
   }

@@ -2,6 +2,7 @@
   "ingredients": [{
     "zucchini" : {
       "type": "vegetable",
+      "price": "cheap",
       "match": [{
         "name": "mozzarella",
         "type": ["rich"]

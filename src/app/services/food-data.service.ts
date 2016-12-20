@@ -21,7 +21,7 @@ export class FoodDataService {
     return new Promise(resolve => {
       this.http.get('http://localhost:3000/api')
         .subscribe(data => {
-          console.log(data);
+          console.log("what I get from the server",data);
           this.data = data.results;
           resolve(this.data);
         });
@@ -30,8 +30,7 @@ export class FoodDataService {
 
   understandWords(sentence){
     var parameter = JSON.stringify({sentence:sentence});
-    console.log(parameter);
-
+    //console.log(parameter);
 
     var creds = "sentence=" + sentence;
     var headers = new Headers();
@@ -42,8 +41,9 @@ export class FoodDataService {
 
       this.http.post('http://localhost:3000/understand?'+creds)
         .subscribe(data => {
-          console.log(data);
-          this.data = data.results;
+        //  console.log(data._body);
+          this.data = data._body;
+          console.log(this.data);
           resolve(this.data);
         });
     });

@@ -1,20 +1,47 @@
 <!-- <input (keyup)="onUpdate($event)" (click)="onUpdate($event)"> -->
-<div id="editor">
-  <span *ngFor="let word of words; let i = index">
+<div class="container">
+  <div class="row">
+    <div id="title">
+      <h1>what should we have today?</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div id="editor" >
+      <span *ngFor="let word of words; let i = index">
+        <span
+          class="word {{word.author}}"
+          contenteditable="true"
+          (keydown)="handleKeyEvent($event,'key',i)"
+          (keydown.Enter)="handleKeyEvent( $event, 'Enter', i )"
+          (keydown.ArrowLeft)="handleKeyEvent( $event, 'Arrow Left', i )"
+          (keydown.ArrowUp)="handleKeyEvent( $event, 'Arrow Up', i )"
+          (keydown.ArrowRight)="handleKeyEvent( $event, 'Arrow Right', i )"
+          (keydown.ArrowDown)="handleKeyEvent( $event, 'Arrow Down', i )"
+          (keydown.Space)="handleKeyEvent( $event, 'Space', i )"
+          (keydown.BackSpace)="handleKeyEvent( $event, 'BackSpace', i )"
+          (blur)="handleKeyEvent( $event, 'Blur', i )"
+          (click)="handleKeyEvent( $event, 'Click', i )"
+          [ngClass]="{'entity': word.isEntity }"
+            >{{word.word}}</span>
 
-    <span
-      class="word {{word.author}}"
-      contenteditable="true"
-      (keydown)="handleKeyEvent($event,'key',i)"
-      (keydown.Enter)="handleKeyEvent( $event, 'Enter', i )"
-      (keydown.ArrowLeft)="handleKeyEvent( $event, 'Arrow Left', i )"
-      (keydown.ArrowUp)="handleKeyEvent( $event, 'Arrow Up', i )"
-      (keydown.ArrowRight)="handleKeyEvent( $event, 'Arrow Right', i )"
-      (keydown.ArrowDown)="handleKeyEvent( $event, 'Arrow Down', i )"
-      (keydown.Space)="handleKeyEvent( $event, 'Space', i )">{{word.word}}</span>
-
-    <!-- <span class="autocomplete" [hidden]="i!=focussedWordPosition">{{word}}</span> -->
-
-  </span>
+        <!-- <span class="autocomplete" [hidden]="i!=focussedWordPosition">{{word}}</span> -->
+      </span>
+    </div>
+  </div>
+  <div class="row controls">
+    <span class="pauseButton" (click)="togglePause()">
+      <span class="fa fa-play fa-1x" [ngClass]="{'hidden': !isAiPaused }"></span>
+      <span class="fa fa-stop fa-1x" [ngClass]="{'hidden': isAiPaused }"></span>
+      autopilot
+    </span>
+    <span class="analyzeText" (click)="understandSentence()">
+      <span class="fa fa-eyedropper fa-1x" ></span>
+      analyze-text
+    </span>
+    <span class="getNewInsight">
+      <span class="fa fa-edit fa-1x" ></span>
+      get new insight
+    </span>
+    <!-- {{focussedWordPosition}} -->
+  </div>
 </div>
-{{focussedWordPosition}}
