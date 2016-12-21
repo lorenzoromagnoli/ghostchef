@@ -5,20 +5,24 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { EditorComponent } from './editor/editor.component';
+import { ChefSwitcherComponent } from './chef-switcher/chef-switcher.component';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EditorComponent
+    EditorComponent,
+    ChefSwitcherComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    NgbModule.forRoot(),
   ],
   providers: [],
   bootstrap: [
-    AppComponent,
     EditorComponent
   ]
 })

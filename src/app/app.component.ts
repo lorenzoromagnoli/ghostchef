@@ -6,6 +6,6 @@ import { Word } from './editor/word';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
-  title = 'what should we eat today?';
 }

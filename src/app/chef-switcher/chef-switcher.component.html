@@ -1,0 +1,16 @@
+<div class="chef-switcher row">
+
+
+  <span class="chooseYourchef" *ngIf="activeChef==null" (click)="$event.stopPropagation(); myDrop.open();">
+    you havn't selected a chef to work with yet
+  </span>
+
+    <div class="col-xs-6">
+    <div ngbDropdown #myDrop="ngbDropdown" class="d-inline-block">
+      <!-- <button class="btn btn-outline" id="dropdownMenu1" ngbDropdownToggle>Toggle dropdown</button> -->
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <button  *ngFor="let chef of chefs; let i = index" class="dropdown-item">{{chef.name}}</button>
+      </div>
+    </div>
+  </div>
+</div>

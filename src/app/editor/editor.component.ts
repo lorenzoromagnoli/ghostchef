@@ -81,7 +81,6 @@ export class EditorComponent implements OnInit {
         this.words[index].word = word
       }
     }
-
   }
 
 
@@ -162,14 +161,13 @@ export class EditorComponent implements OnInit {
       //var tokens = [];
       //console.log(response.tokens);
       for(var i=0; i<response.tokens.length; i++){
-      //  console.log(response.tokens[i].dependencyEdge.label);
+        //console.log(response.tokens[i].dependencyEdge.label);
         if (response.tokens[i].dependencyEdge.label=="AMOD"||response.tokens[i].dependencyEdge.label=="ATTR"){
           this.words[response.tokens[i].dependencyEdge.headTokenIndex].attributes.push(response.tokens[i].text);
           this.words[i].isAttribute=true;
-      //    console.log(this.words[i].word , this.words[response.tokens[i].dependencyEdge.headTokenIndex]);
+          //console.log(this.words[i].word , this.words[response.tokens[i].dependencyEdge.headTokenIndex]);
           //console.log(this.words[response.tokens[i].dependencyEdge.headTokenIndex].attributes);
         }
-        console.log(this.words[i]);
       }
     });
   }
@@ -189,7 +187,6 @@ export class EditorComponent implements OnInit {
     this.foodDataService.getAllFoods().then(data => {
       console.log("got data", data);
     });
-
   }
 
   getFoodbyName() {
@@ -199,7 +196,6 @@ export class EditorComponent implements OnInit {
   }
 
   nothingHappeningTimer = window.setInterval(this.getComputeraction.bind(this), this.timetowait);
-
 }
 
 

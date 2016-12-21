@@ -5,6 +5,11 @@
       <h1>what should we have today?</h1>
     </div>
   </div>
+
+  <app-chef-switcher>
+    Loading...
+  </app-chef-switcher>
+
   <div class="row">
     <div id="editor" >
       <span *ngFor="let word of words; let i = index">
@@ -29,6 +34,8 @@
       </span>
     </div>
   </div>
+
+
   <div class="row controls">
     <span class="pauseButton" (click)="togglePause()">
       <span class="fa fa-play fa-1x" [ngClass]="{'hidden': !isAiPaused }"></span>
