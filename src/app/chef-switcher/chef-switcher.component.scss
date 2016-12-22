@@ -1,0 +1,35 @@
+.chef-switcher{
+text-align: right;
+}
+.addChef{
+  float: right;
+}
+
+.active-chef-list{
+  display: inline-block;
+  // float: right;
+  .chef{
+    display: inline-block;
+    padding: 0px 9px;
+  }
+}
+
+.addChef-menu{
+  right: 0px;
+  text-align: right;
+  float: right;
+  min-width: 127px;
+  padding: 0px;
+  top: 40px;
+
+  .dropdown-item{
+    .inner{
+      width: 100%;
+      &.active{
+        .icon{
+          color: blue;
+        }
+      }
+    }
+  }
+}
