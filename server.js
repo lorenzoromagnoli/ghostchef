@@ -12,7 +12,6 @@ var language = require('@google-cloud/language')({
   keyFilename: 'apikey/foodProcessor-16cdf8c1cfa6.json'
 });
 
-
 var express = require('express');
 var path = require('path');
 var app = express();
@@ -27,7 +26,6 @@ fs.readFile(path.normalize(__dirname + '/src/data/lorenzo.json'), function (err,
   console.log(data.toString());
   allFood=JSON.parse(data.toString());
 });
-
 
 
 // Define the port to run on

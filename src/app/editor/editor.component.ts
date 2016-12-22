@@ -27,7 +27,7 @@ export class EditorComponent implements OnInit {
   words: Word[] = [this.placeholderWord];
   focussedWordPosition = 0;
 
-  nothingIsHappeningTimer;
+  nothingHappeningTimer = window.setInterval(this.getComputeraction.bind(this), this.timetowait);
   timetowait = 5000;
   isAiPaused = true;
 
@@ -114,7 +114,6 @@ export class EditorComponent implements OnInit {
 
   getComputeraction() {
     if (this.isAiPaused) {
-
     } else {
       //try to understand the sentence
       this.understandSentence();
@@ -184,6 +183,10 @@ export class EditorComponent implements OnInit {
 
   ngOnInit() {
     console.log("started");
+    
+  }
+
+  addChef(name:string){
     this.foodDataService.getAllFoods().then(data => {
       console.log("got data", data);
     });
@@ -195,9 +198,7 @@ export class EditorComponent implements OnInit {
     });
   }
 
-  nothingHappeningTimer = window.setInterval(this.getComputeraction.bind(this), this.timetowait);
 }
-
 
 var getRandom = function(a, b) {
   var randomNumber = Math.round(Math.random() * (b - a)) - a;

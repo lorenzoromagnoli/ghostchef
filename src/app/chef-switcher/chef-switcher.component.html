@@ -1,16 +1,31 @@
 <div class="chef-switcher row">
 
-  <span class="addChef fa fa-plus fa-2x" *ngIf="activeChef==null" (click)="$event.stopPropagation(); myDrop.open();">
-  </span>
+  <div class="active-chef-list">
+    <div class="chef" *ngFor="let chef of chefs; let i = index">
+      <span class="name" *ngIf="chef.isActive">
+        {{chef.name}}
+      </span>
+    </div>
+  </div>
+
+  <span class="addChef fa fa-plus fa-2x" *ngIf="activeChef==null" (click)="$event.stopPropagation(); myDrop.open();"></span>
 
   <div ngbDropdown #myDrop="ngbDropdown" class="d-inline-block addChef-menu">
     <!-- <button class="btn btn-outline" id="dropdownMenu1" ngbDropdownToggle>Toggle dropdown</button> -->
     <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-
       <button *ngFor="let chef of chefs; let i = index" class="dropdown-item">
-        {{chef.name}}
-      </button>
 
+        <div class="inner" (click)="chef.toggleActive()" [ngClass]="{'active': chef.isActive }">
+
+          <span class="icon fa fa-dot-circle-o fa-1x"></span>
+
+          <span class="name">
+            {{chef.name}}
+          </span>
+
+        </div>
+
+      </button>
     </div>
   </div>
 </div>

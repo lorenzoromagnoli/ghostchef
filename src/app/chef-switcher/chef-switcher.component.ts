@@ -6,7 +6,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-chef-switcher',
   templateUrl: './chef-switcher.component.html',
-  styleUrls: ['./chef-switcher.component.css']
+  styleUrls: ['./chef-switcher.component.scss']
 })
 
 export class ChefSwitcherComponent implements OnInit {
@@ -15,7 +15,6 @@ export class ChefSwitcherComponent implements OnInit {
   activeChef:Chef;
 
   constructor() { }
-
 
   ngOnInit() {
     this.chefs=[];
