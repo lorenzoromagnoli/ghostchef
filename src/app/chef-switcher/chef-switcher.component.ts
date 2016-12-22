@@ -11,17 +11,19 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 export class ChefSwitcherComponent implements OnInit {
 
-  chefs:Chef[]=[];
+  chefs:Chef[];
   activeChef:Chef;
 
   constructor() { }
 
 
   ngOnInit() {
+    this.chefs=[];
     var lorenzo=new Chef("Lorenzo");
     this.chefs.push(lorenzo);
     var lorenzo=new Chef("Mario");
     this.chefs.push(lorenzo);
+    console.log(this.chefs);
   }
 
 }

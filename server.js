@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var cors = require('cors');
+
 
 var language = require('@google-cloud/language')({
   projectId: 'foodProcessor',
@@ -30,6 +32,8 @@ fs.readFile(path.normalize(__dirname + '/src/data/lorenzo.json'), function (err,
 
 // Define the port to run on
 app.set('port', 3000);
+
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
