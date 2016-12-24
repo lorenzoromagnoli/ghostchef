@@ -38,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.get('/api',function(req,res){
   res.send("{'name':'ciao'}");
 })
+
 app.get('/allfood',function(req,res){
   res.json(allFood);
 })

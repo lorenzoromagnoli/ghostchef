@@ -6,7 +6,7 @@ import { FoodDataService } from '../services/food-data.service';
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.css'],
+  styleUrls: ['./editor.component.scss'],
   providers: [FoodDataService]
 })
 
@@ -23,6 +23,7 @@ export class EditorComponent implements OnInit {
   placeholderWord = new Word("...", "human")
   // { 'word': '...', 'type': 'ingredient', 'author': 'user', 'isEntity':false };
 
+  foodData;
 
   words: Word[] = [this.placeholderWord];
   focussedWordPosition = 0;
@@ -30,6 +31,21 @@ export class EditorComponent implements OnInit {
   nothingHappeningTimer = window.setInterval(this.getComputeraction.bind(this), this.timetowait);
   timetowait = 5000;
   isAiPaused = true;
+
+  higlightedWord=-1;
+  wordsRelatedToHighlighted=[];
+
+  mouseOver(event:any, index: number){
+    this.higlightedWord=index;
+    this.wordsRelatedToHighlighted=this.words[index].connectsTo;
+  }
+  mouseLeave(event:any, index: number){
+    this.higlightedWord=-1;
+    this.wordsRelatedToHighlighted=[];
+  }
+
+
+
 
   handleKeyEvent(event: any, value: any, index: number) {
 
@@ -143,8 +159,10 @@ export class EditorComponent implements OnInit {
       //reset all the info about entities and attributes in the text
       for (var j = 0; j < this.words.length; j++) {
         this.words[j].isEntity = false;
-        this.words[j].isAttribute=false;
-        this.words[j].attributes=[];
+        this.words[j].isAttribute = false;
+        this.words[j].hasConnections = false;
+        this.words[j].connectsTo=[];
+        this.words[j].attributes = [];
       }
       //add tag of entities to the words in the array
       for (var i = 0; i < entities.length; i++) {
@@ -159,15 +177,58 @@ export class EditorComponent implements OnInit {
       //get all the entities from the response json
       //var tokens = [];
       //console.log(response.tokens);
-      for(var i=0; i<response.tokens.length; i++){
+      for (var i = 0; i < response.tokens.length; i++) {
+        this.words[i].type = response.tokens[i].dependencyEdge.label;
+        this.words[i].dependencyEdge = response.tokens[i].dependencyEdge.headTokenIndex;
+        this.words[i].dependencyType=response.tokens[i].dependencyEdge.label;
+
+
+        //this method of parsing relation is very unefficient consider restructuring looking for Pobject relation first and then look in to the tree of relations. @Simo, maybe you can take care of this.
+
+
         //console.log(response.tokens[i].dependencyEdge.label);
-        if (response.tokens[i].dependencyEdge.label=="AMOD"||response.tokens[i].dependencyEdge.label=="ATTR"){
+        if (response.tokens[i].dependencyEdge.label == "AMOD" || response.tokens[i].dependencyEdge.label == "ATTR") {
           this.words[response.tokens[i].dependencyEdge.headTokenIndex].attributes.push(response.tokens[i].text);
-          this.words[i].isAttribute=true;
+          this.words[i].isAttribute = true;
           //console.log(this.words[i].word , this.words[response.tokens[i].dependencyEdge.headTokenIndex]);
           //console.log(this.words[response.tokens[i].dependencyEdge.headTokenIndex].attributes);
+        } else if (response.tokens[i].dependencyEdge.label == "PREP") { //if we find a preposition (probably if is "with")
+          for (var j = 0; j < response.tokens.length; j++) {
+            if (response.tokens[j].dependencyEdge.label == "POBJ") { //if the word is pobject
+              if (response.tokens[j].dependencyEdge.headTokenIndex == i) { //if the Pobj is related to the prep we are analyzinf
+
+                var indexOfTheEntityConnectedToTheProposition=response.tokens[i].dependencyEdge.headTokenIndex;
+                this.words[indexOfTheEntityConnectedToTheProposition].hasConnections = true;
+                this.words[indexOfTheEntityConnectedToTheProposition].connectsTo.push(j); //add the index of the pobject to the list of things that connect to the entity
+              }
+            }
+          }
+        } else if (response.tokens[i].dependencyEdge.label == "CONJ") { //I found a word that is conjucted to something else
+          var isTheWordRoot=true;
+          var arrayOfWords=[];//add every word I check to the array
+          var analyzingWord=response.tokens[i].dependencyEdge.headTokenIndex;
+
+          while (arrayOfWords.indexOf(analyzingWord)==-1){//I loop in the hierarchy chain until I go twice on the same path
+            if (response.tokens[analyzingWord].dependencyEdge.label == "POBJ" || response.tokens[j].dependencyEdge.label == "APPOS") { //if I find the object of a preposition
+
+              var prepIndex=response.tokens[analyzingWord].dependencyEdge.headTokenIndex;
+              var rootIndex=response.tokens[prepIndex].dependencyEdge.headTokenIndex;
+
+              this.words[rootIndex].hasConnections = true;
+              this.words[rootIndex].connectsTo.push(i); //add the index of the pobject to
+              isTheWordRoot=false;
+            }else{
+              analyzingWord=response.tokens[analyzingWord].dependencyEdge.headTokenIndex //I move to the next step of the chain
+            }
+            arrayOfWords.push(analyzingWord); //add the index of the element I searched to the array
+          }
+          if (isTheWordRoot){
+            this.words[analyzingWord].hasConnections = true;
+            this.words[analyzingWord].connectsTo.push(i); //add the index of the pobject to the list of things that connect to
+          }
         }
       }
+      console.log(this.words);
     });
   }
 
@@ -180,15 +241,15 @@ export class EditorComponent implements OnInit {
     this.words.splice(index, 1);
   }
 
-
   ngOnInit() {
     console.log("started");
-    
+    this.addChef();
   }
 
-  addChef(name:string){
+  addChef() {
     this.foodDataService.getAllFoods().then(data => {
       console.log("got data", data);
+      this.foodData = JSON.parse(data);
     });
   }
 
@@ -198,6 +259,61 @@ export class EditorComponent implements OnInit {
     });
   }
 
+
+
+  searchEntities() { //return the position of entities in the sentence as array
+    var entitiesArray = [];
+    console.log(this.foodData);
+    for (var i = 0; i < this.words.length; i++) {
+      if (this.words[i].isEntity) {
+        if (this.foodData.ingredients[this.words[i].word] != null) {
+          //the ingredient exist in the db
+          entitiesArray.push(i);
+          console.log("got it");
+        } else {
+          //I don't know the food
+          console.log("noFoodFoundInDB");
+        }
+      }
+    }
+    console.log(entitiesArray);
+    return (entitiesArray);
+  }
+
+  addPreparationToIndex(indexOfEntityToModify) { //add a new word with preparations before the etity
+    var ingredient = this.words[indexOfEntityToModify].word;
+    var possiblePreparations = this.foodData.ingredients[ingredient].preparations
+    var preparation = possiblePreparations[getRandom(0, possiblePreparations.length)]
+    var prep = new Word(preparation, "machine");
+    this.words.splice(indexOfEntityToModify, 0, prep);
+  }
+  addIngredientToIndex(indexOfEntityToModify) { //add a new word with preparations before the etity
+    var ingredient = this.words[indexOfEntityToModify].word;
+    var possibleIngredients = this.foodData.ingredients[ingredient].match
+    var match = possibleIngredients[getRandom(0, possibleIngredients.length)].name
+    var matchingIngredient = new Word(match, "machine");
+    this.words.splice(indexOfEntityToModify + 1, 0, matchingIngredient);
+  }
+
+  addPreparation() {
+    var ent = this.searchEntities();
+    console.log(ent);
+    for (var i = 0; i < ent.length; i++) {
+      this.addPreparationToIndex(ent[i])
+    }
+  }
+
+  lookForConjunctions() {
+
+  }
+
+  addIngredient() {
+    var ent = this.searchEntities();
+    console.log(ent);
+    for (var i = 0; i < ent.length; i++) {
+      this.addIngredientToIndex(ent[i])
+    }
+  }
 }
 
 var getRandom = function(a, b) {

@@ -1,0 +1,58 @@
+  #editor {
+      margin: auto;
+      font-size: 2em;
+      display: block;
+      min-height: 50px;
+      background-color: #eee;
+  }
+
+  .autocomplete{
+    background-color: #aaaaaa;
+  }
+
+  sup {
+    top: -1.5em;
+    font-size: 8px;
+}
+
+  .word{
+    min-width: 40px;
+    display: inline-block;
+
+    &.attribute{
+      border-bottom: 2px dashed yellow;
+
+    }
+    &.entity{
+      border-bottom: 2px solid yellow;
+    }
+
+    &.machine{
+      border-bottom: 2px solid violet;
+    }
+
+    &.isHighlighted{
+      font-weight: bold;
+      color:#000;
+    }
+    &.isRelated{
+      font-weight: bold;
+    }
+    &.isNotRelated{
+      color: #aaa;
+    }
+
+
+  }
+
+
+
+  .word.machine{
+    border-bottom: 2px solid violet;
+  }
+
+  .pauseButton{
+    .hidden{
+    display: none;
+    }
+  }

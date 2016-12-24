@@ -26,9 +26,19 @@
           (keydown.BackSpace)="handleKeyEvent( $event, 'BackSpace', i )"
           (blur)="handleKeyEvent( $event, 'Blur', i )"
           (click)="handleKeyEvent( $event, 'Click', i )"
-          [ngClass]="{'entity': word.isEntity,'attribute': word.isAttribute }"
+          [ngClass]="{
+                      'entity': word.isEntity,
+                      'attribute': word.isAttribute,
+                      'isHighlighted': i==higlightedWord,
+                      'isRelated': wordsRelatedToHighlighted.indexOf(i)!=-1,
+                      'isNotRelated': higlightedWord!=-1 && wordsRelatedToHighlighted.indexOf(i)==-1 && i!=higlightedWord
+                    }"
+          (mouseover)="mouseOver($event, i)"
+          (mouseout)="mouseLeave($event, i)"
 
             >{{word.word}}</span>
+            <sup class="apex">{{word.dependencyEdge}}</sup>
+            <sup class="apex">_{{word.dependencyType}}</sup>
 
         <!-- <span class="autocomplete" [hidden]="i!=focussedWordPosition">{{word}}</span> -->
       </span>
@@ -46,9 +56,13 @@
       <span class="fa fa-eyedropper fa-1x" ></span>
       analyze-text
     </span>
-    <span class="getNewInsight">
+    <span class="addPreparation" (click)="addPreparation()">
       <span class="fa fa-edit fa-1x" ></span>
-      get new insight
+      add preparation
+    </span>
+    <span class="addIngredient" (click)="addIngredient()">
+      <span class="fa fa-edit fa-1x" ></span>
+      add ingredient
     </span>
     <!-- {{focussedWordPosition}} -->
   </div>
