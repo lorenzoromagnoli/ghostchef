@@ -19,7 +19,7 @@ export class FoodDataService {
       return Promise.resolve(this.data);
     }
     return new Promise(resolve => {
-      this.http.get('http://localhost:3000/api')
+      this.http.get('/api')
         .subscribe(data => {
           console.log("what I get from the server", data);
           this.data = data.results;
@@ -34,7 +34,7 @@ export class FoodDataService {
       return Promise.resolve(this.allFood);
     }
     return new Promise(resolve => {
-      this.http.get('http://localhost:3000/allfood')
+      this.http.get('/allfood')
         .subscribe(data => {
           console.log(data);
           this.data = data._body;
@@ -53,7 +53,7 @@ export class FoodDataService {
 
     return new Promise(resolve => {
 
-      this.http.post('http://localhost:3000/understand?' + creds)
+      this.http.post('/understand?' + creds)
         .subscribe(data => {
           //  console.log(data._body);
           this.data = data._body;

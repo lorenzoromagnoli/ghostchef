@@ -603,7 +603,7 @@ var FoodDataService = (function () {
             return Promise.resolve(this.data);
         }
         return new Promise(function (resolve) {
-            _this.http.get('http://localhost:3000/api')
+            _this.http.get('/api')
                 .subscribe(function (data) {
                 console.log("what I get from the server", data);
                 _this.data = data.results;
@@ -618,7 +618,7 @@ var FoodDataService = (function () {
             return Promise.resolve(this.allFood);
         }
         return new Promise(function (resolve) {
-            _this.http.get('http://localhost:3000/allfood')
+            _this.http.get('/allfood')
                 .subscribe(function (data) {
                 console.log(data);
                 _this.data = data._body;
@@ -634,7 +634,7 @@ var FoodDataService = (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         return new Promise(function (resolve) {
-            _this.http.post('http://localhost:3000/understand?' + creds)
+            _this.http.post('/understand?' + creds)
                 .subscribe(function (data) {
                 //  console.log(data._body);
                 _this.data = data._body;
