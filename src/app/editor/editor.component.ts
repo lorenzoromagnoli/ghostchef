@@ -182,9 +182,14 @@ export class EditorComponent implements OnInit {
         this.words[i].dependencyEdge = response.tokens[i].dependencyEdge.headTokenIndex;
         this.words[i].dependencyType=response.tokens[i].dependencyEdge.label;
 
+        // #################
+        // ###___#####___###
+        // ######  _|#######
+        // ###__######__####
+        // #####-----#######
 
         //this method of parsing relation is very unefficient consider restructuring looking for Pobject relation first and then look in to the tree of relations. @Simo, maybe you can take care of this.
-
+        // #################
 
         //console.log(response.tokens[i].dependencyEdge.label);
         if (response.tokens[i].dependencyEdge.label == "AMOD" || response.tokens[i].dependencyEdge.label == "ATTR") {
@@ -292,8 +297,17 @@ export class EditorComponent implements OnInit {
     var possibleIngredients = this.foodData.ingredients[ingredient].match
     var match = possibleIngredients[getRandom(0, possibleIngredients.length)].name
     var matchingIngredient = new Word(match, "machine");
-    this.words.splice(indexOfEntityToModify + 1, 0, matchingIngredient);
+
+
+    if (this.words[indexOfEntityToModify].hasConnections){ //this means there are already ingredients addedd to it
+      var comma = new Word(",", "");
+      this.words.splice(indexOfEntityToModify + 1, 0, comma, matchingIngredient);
+    }else{ //just add an end and a word after it
+      var and = new Word("and", "");
+      this.words.splice(indexOfEntityToModify + 1, 0, and, matchingIngredient);
+    }
   }
+
 
   addPreparation() {
     var ent = this.searchEntities();
