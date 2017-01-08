@@ -27,9 +27,11 @@ fs.readFile(path.normalize(__dirname + '/src/data/lorenzo.json'), function (err,
   allFood=JSON.parse(data.toString());
 });
 
+var port = process.env.PORT || 8080;
+
 
 // Define the port to run on
-app.set('port', 3000);
+app.set('port', port);
 
 app.use(cors());
 
