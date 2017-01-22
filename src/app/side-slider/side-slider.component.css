@@ -1,0 +1,8 @@
+#sideSlider{
+  max-width: 30%;
+  float: right;
+
+  border: 1px solid black;
+  background-color: #aaaaaa;
+  padding: 20px;
+}

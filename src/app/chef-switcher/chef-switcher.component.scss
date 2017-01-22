@@ -47,6 +47,8 @@ padding-right: 8px;
   }
 }
 
+
+
 .addChef-menu{
   right: 0px;
   text-align: right;
@@ -56,11 +58,12 @@ padding-right: 8px;
   top: 40px;
 
   .dropdown-item{
+    height: 40px;
     .inner{
       width: 100%;
       &.active{
         .icon{
-          color: blue;
+          color: white;
         }
       }
     }

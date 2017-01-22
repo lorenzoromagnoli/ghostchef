@@ -18,7 +18,7 @@
   <div ngbDropdown #myDrop="ngbDropdown" class="d-inline-block addChef-menu">
     <!-- <button class="btn btn-outline" id="dropdownMenu1" ngbDropdownToggle>Toggle dropdown</button> -->
     <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <button *ngFor="let chef of chefs; let i = index" class="dropdown-item">
+      <button *ngFor="let chef of chefs; let i = index" class="dropdown-item bg-{{chef.color}}">
 
         <div class="inner" (click)="chef.toggleActive()" [ngClass]="{'active': chef.isActive }">
 
