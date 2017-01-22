@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div id="title">
-      <h1>what should we have today?</h1>
+      <h1 class="title">ghostChef</h1>
     </div>
   </div>
 
@@ -10,8 +10,14 @@
     Loading...
   </app-chef-switcher>
 
+  <span class="pauseButton bigButton bg-pink" (click)="togglePause()">
+    <span class="fa fa-play fa-2x" [ngClass]="{'hidden': !isAiPaused }"></span>
+    <span class="fa fa-stop fa-2x" [ngClass]="{'hidden': isAiPaused }"></span>
+  </span>
+
   <div class="row">
-    <div id="editor" >
+    <div id="editor" [@collapsedChanged]="isCollapsed" [ngClass]="{'fullWidth': fullWidth, 'collapsed': !fullWidth}">
+
       <span *ngFor="let word of words; let i = index">
         <span
           class="word {{word.author}}"
@@ -43,7 +49,22 @@
         <!-- <span class="autocomplete" [hidden]="i!=focussedWordPosition">{{word}}</span> -->
       </span>
     </div>
+
+
+
+
+    <app-side-slider >
+      Loading...
+    </app-side-slider>
+
+
+
   </div>
+
+
+
+
+
 
 
   <div class="row controls">
@@ -63,6 +84,11 @@
     <span class="addIngredient" (click)="addIngredient()">
       <span class="fa fa-edit fa-1x" ></span>
       add ingredient
+    </span>
+
+    <span class="toggleSlider" (click)="toggleSlider()">
+      <span class="fa fa-sliders fa-1x" ></span>
+      toggleSlider
     </span>
     <!-- {{focussedWordPosition}} -->
   </div>

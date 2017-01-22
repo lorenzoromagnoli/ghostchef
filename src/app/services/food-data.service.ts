@@ -34,7 +34,7 @@ export class FoodDataService {
       return Promise.resolve(this.allFood);
     }
     return new Promise(resolve => {
-      this.http.get('/allfood')
+      this.http.get('http://localhost:8080/allfood')
         .subscribe(data => {
           console.log(data);
           this.data = data._body;
@@ -53,7 +53,7 @@ export class FoodDataService {
 
     return new Promise(resolve => {
 
-      this.http.post('/understand?' + creds)
+      this.http.post('http://localhost:8080/understand?' + creds)
         .subscribe(data => {
           //  console.log(data._body);
           this.data = data._body;

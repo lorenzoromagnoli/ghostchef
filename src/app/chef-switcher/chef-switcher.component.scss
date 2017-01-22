@@ -1,8 +1,37 @@
+.bg-teal{
+  background-color: #50D9E3
+}
+.bg-green{
+  background-color: #50E3C2
+}
+.bg-yellow{
+  background-color: #EADF54
+}
+
+.bg-pink{
+  background-color: #D776EB
+}
+
+.bigButton{
+  background-color: #D776EB;
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+}
+
 .chef-switcher{
 text-align: right;
+width: 95%;
+margin-top: -11px;
+padding: 6px 8px;
 }
+
 .addChef{
   float: right;
+margin-top: -11px;
+padding-top: 6px;
+margin-right: 0px;
+padding-right: 8px;
 }
 
 .active-chef-list{
@@ -11,6 +40,10 @@ text-align: right;
   .chef{
     display: inline-block;
     padding: 0px 9px;
+    span{
+      height: 40px;
+      padding: 10px
+    }
   }
 }
 

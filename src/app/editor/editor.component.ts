@@ -1,13 +1,32 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component,
+  Input,
+  OnInit,
+  ViewChild,
+  trigger,
+  state,
+  style,
+  transition,
+  animate
+} from '@angular/core';
 import { Word } from './word';
 import { FoodDataService } from '../services/food-data.service';
+import { SideSliderComponent }  from '../side-slider/side-slider.component';
+
 
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.scss'],
-  providers: [FoodDataService]
+  providers: [FoodDataService],
+
+  animations: [
+    trigger('collapsedChanged', [
+      state('true', style({ width: '70%'})),
+      state('false', style({ width: '100%'})),
+      transition('* => *', animate('300ms')),
+    ])
+  ]
 })
 
 
@@ -17,11 +36,17 @@ export class EditorComponent implements OnInit {
     this.foodDataService = foodDataService;
   }
 
-  // id = 1;
-  text = '';
+  @ViewChild(SideSliderComponent)
+  private sliderComponent: SideSliderComponent;
 
+  @Input() isCollapsed : boolean = false;
+
+  text = '';
+  fullWidth = false;
   placeholderWord = new Word("...", "human")
   // { 'word': '...', 'type': 'ingredient', 'author': 'user', 'isEntity':false };
+
+
 
   foodData;
 
@@ -32,16 +57,22 @@ export class EditorComponent implements OnInit {
   timetowait = 5000;
   isAiPaused = true;
 
-  higlightedWord=-1;
-  wordsRelatedToHighlighted=[];
+  higlightedWord = -1;
+  wordsRelatedToHighlighted = [];
 
-  mouseOver(event:any, index: number){
-    this.higlightedWord=index;
-    this.wordsRelatedToHighlighted=this.words[index].connectsTo;
+
+  toggleSlider(){
+    this.isCollapsed = !this.isCollapsed;
+    this.sliderComponent.togglevisible();
   }
-  mouseLeave(event:any, index: number){
-    this.higlightedWord=-1;
-    this.wordsRelatedToHighlighted=[];
+
+  mouseOver(event: any, index: number) {
+    this.higlightedWord = index;
+    this.wordsRelatedToHighlighted = this.words[index].connectsTo;
+  }
+  mouseLeave(event: any, index: number) {
+    this.higlightedWord = -1;
+    this.wordsRelatedToHighlighted = [];
   }
 
 
@@ -161,7 +192,7 @@ export class EditorComponent implements OnInit {
         this.words[j].isEntity = false;
         this.words[j].isAttribute = false;
         this.words[j].hasConnections = false;
-        this.words[j].connectsTo=[];
+        this.words[j].connectsTo = [];
         this.words[j].attributes = [];
       }
       //add tag of entities to the words in the array
@@ -180,7 +211,7 @@ export class EditorComponent implements OnInit {
       for (var i = 0; i < response.tokens.length; i++) {
         this.words[i].type = response.tokens[i].dependencyEdge.label;
         this.words[i].dependencyEdge = response.tokens[i].dependencyEdge.headTokenIndex;
-        this.words[i].dependencyType=response.tokens[i].dependencyEdge.label;
+        this.words[i].dependencyType = response.tokens[i].dependencyEdge.label;
 
         // #################
         // ###___#####___###
@@ -202,32 +233,32 @@ export class EditorComponent implements OnInit {
             if (response.tokens[j].dependencyEdge.label == "POBJ") { //if the word is pobject
               if (response.tokens[j].dependencyEdge.headTokenIndex == i) { //if the Pobj is related to the prep we are analyzinf
 
-                var indexOfTheEntityConnectedToTheProposition=response.tokens[i].dependencyEdge.headTokenIndex;
+                var indexOfTheEntityConnectedToTheProposition = response.tokens[i].dependencyEdge.headTokenIndex;
                 this.words[indexOfTheEntityConnectedToTheProposition].hasConnections = true;
                 this.words[indexOfTheEntityConnectedToTheProposition].connectsTo.push(j); //add the index of the pobject to the list of things that connect to the entity
               }
             }
           }
         } else if (response.tokens[i].dependencyEdge.label == "CONJ") { //I found a word that is conjucted to something else
-          var isTheWordRoot=true;
-          var arrayOfWords=[];//add every word I check to the array
-          var analyzingWord=response.tokens[i].dependencyEdge.headTokenIndex;
+          var isTheWordRoot = true;
+          var arrayOfWords = [];//add every word I check to the array
+          var analyzingWord = response.tokens[i].dependencyEdge.headTokenIndex;
 
-          while (arrayOfWords.indexOf(analyzingWord)==-1){//I loop in the hierarchy chain until I go twice on the same path
+          while (arrayOfWords.indexOf(analyzingWord) == -1) {//I loop in the hierarchy chain until I go twice on the same path
             if (response.tokens[analyzingWord].dependencyEdge.label == "POBJ" || response.tokens[j].dependencyEdge.label == "APPOS") { //if I find the object of a preposition
 
-              var prepIndex=response.tokens[analyzingWord].dependencyEdge.headTokenIndex;
-              var rootIndex=response.tokens[prepIndex].dependencyEdge.headTokenIndex;
+              var prepIndex = response.tokens[analyzingWord].dependencyEdge.headTokenIndex;
+              var rootIndex = response.tokens[prepIndex].dependencyEdge.headTokenIndex;
 
               this.words[rootIndex].hasConnections = true;
               this.words[rootIndex].connectsTo.push(i); //add the index of the pobject to
-              isTheWordRoot=false;
-            }else{
-              analyzingWord=response.tokens[analyzingWord].dependencyEdge.headTokenIndex //I move to the next step of the chain
+              isTheWordRoot = false;
+            } else {
+              analyzingWord = response.tokens[analyzingWord].dependencyEdge.headTokenIndex //I move to the next step of the chain
             }
             arrayOfWords.push(analyzingWord); //add the index of the element I searched to the array
           }
-          if (isTheWordRoot){
+          if (isTheWordRoot) {
             this.words[analyzingWord].hasConnections = true;
             this.words[analyzingWord].connectsTo.push(i); //add the index of the pobject to the list of things that connect to
           }
@@ -254,7 +285,7 @@ export class EditorComponent implements OnInit {
   addChef() {
     this.foodDataService.getAllFoods().then(data => {
       console.log("got data", data);
-      this.foodData = JSON.parse(data);
+      // this.foodData = JSON.parse(data);
     });
   }
 
@@ -299,10 +330,10 @@ export class EditorComponent implements OnInit {
     var matchingIngredient = new Word(match, "machine");
 
 
-    if (this.words[indexOfEntityToModify].hasConnections){ //this means there are already ingredients addedd to it
+    if (this.words[indexOfEntityToModify].hasConnections) { //this means there are already ingredients addedd to it
       var comma = new Word(",", "");
       this.words.splice(indexOfEntityToModify + 1, 0, comma, matchingIngredient);
-    }else{ //just add an end and a word after it
+    } else { //just add an end and a word after it
       var and = new Word("and", "");
       this.words.splice(indexOfEntityToModify + 1, 0, and, matchingIngredient);
     }
