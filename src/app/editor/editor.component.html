@@ -10,7 +10,7 @@
   <div class="row ">
     <div class="topBar tools">
 
-  <app-chef-switcher>
+  <app-chef-switcher (notify)='onChefNotify($event)'>
     Loading...
   </app-chef-switcher>
 
@@ -19,8 +19,8 @@
     <span class="fa fa-stop fa-1x" [ngClass]="{'hidden': isAiPaused }"></span>
   </span>
 
-  <span class="recordButton bigButton bg-red" (click)="startRecording()">
-    <span class="fa fa-circle fa-1x"></span>
+  <span class="recordButton bigButton bg-red" (click)="toggleRecording()" [ngClass]="{'faded': recordingAnimationStatus}">
+    <span class="fa fa-circle fa-1x" ></span>
   </span>
   </div>
 </div>
@@ -30,7 +30,7 @@
 
       <span *ngFor="let word of words; let i = index">
         <span
-          class="word {{word.author}}"
+          class="word {{word.author.color}}"
           contenteditable="true"
           (keydown)="handleKeyEvent($event,'key',i)"
           (keydown.Enter)="handleKeyEvent( $event, 'Enter', i )"

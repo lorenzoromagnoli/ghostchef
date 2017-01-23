@@ -38,6 +38,9 @@ overflow: scroll;
       padding-top: 12px;
       padding-left: 5px;
       padding-right: 5px;
+
+
+      transition: opacity 1s;
 }
 
 .bg-teal{
@@ -57,4 +60,50 @@ overflow: scroll;
 }
 .bg-orange{
   background-color: #F6A623
+}
+
+
+.faded{
+  opacity: .5;
+}
+
+.yellow  .ui-slider .ui-slider-handle{
+  background-color: #EADF54 !important;
+}
+.green  .ui-slider .ui-slider-handle{
+  background-color: #50E3C2 !important;
+}
+.pink  .ui-slider .ui-slider-handle{
+  background-color: #D776EB !important;
+}
+.teal  .ui-slider .ui-slider-handle{
+  background-color: #50D9E3 !important;
+}
+.red  .ui-slider .ui-slider-handle{
+  background-color: #FF533E !important;
+}
+.orange  .ui-slider .ui-slider-handle{
+  background-color: #F6A623 !important;
+}
+
+.yellow.word{
+  border-bottom: 2px solid #EADF54 !important;
+}
+.green.word{
+  border-bottom: 2px solid  #50E3C2 !important;
+}
+.pink.word{
+  border-bottom: 2px solid  #D776EB !important;
+}
+.teal.word{
+  border-bottom: 2px solid #50D9E3 !important;
+}
+.red.word{
+  border-bottom: 2px solid  #FF533E !important;
+}
+.orange.word{
+  border-bottom: 2px solid  #F6A623 !important;
+}
+.white.word{
+  border-bottom: 2px solid  #ffffff !important;
 }

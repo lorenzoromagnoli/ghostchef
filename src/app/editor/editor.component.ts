@@ -9,6 +9,7 @@ import { Component,
   animate
 } from '@angular/core';
 import { Word } from './word';
+import { Chef } from '../chef-switcher/chef';
 import { FoodDataService } from '../services/food-data.service';
 import { SideSliderComponent }  from '../side-slider/side-slider.component';
 
@@ -32,8 +33,19 @@ import { SideSliderComponent }  from '../side-slider/side-slider.component';
 
 export class EditorComponent implements OnInit {
 
+
+
   constructor(private foodDataService: FoodDataService) {
     this.foodDataService = foodDataService;
+  }
+
+
+
+  author; //whos' the author?
+  humanAuthor=new Chef("human", "white", "🇩🇰");
+
+  setAuthorToHuman(){
+    this.author=this.humanAuthor;
   }
 
   @ViewChild(SideSliderComponent)
@@ -47,7 +59,39 @@ export class EditorComponent implements OnInit {
   // { 'word': '...', 'type': 'ingredient', 'author': 'user', 'isEntity':false };
 
 
-  recording=false;
+//all the code for the animation of the recording button.
+  recording=true;
+  recordingAnimationStatus=false;
+  recordingTimer= window.setInterval(this.toggleRecordingAnimation.bind(this), 1000);
+  toggleRecording(){
+    this.recording=!this.recording;
+
+    if (this.recording){
+      window.clearInterval(this.recordingTimer);
+      this.recordingTimer= window.setInterval(this.toggleRecordingAnimation.bind(this), 1000);
+    }else{
+      window.clearInterval(this.recordingTimer);
+    }
+  }
+  toggleRecordingAnimation(){
+    this.recordingAnimationStatus=!this.recordingAnimationStatus;
+  }
+
+
+ //I'm receiving an event from the chef switcher component
+  onChefNotify(chef):void {
+     console.log(chef);
+
+     console.log(this.author);
+
+     if (this.isCollapsed){
+       this.toggleSlider();
+     }
+       this.sliderComponent.setChef(chef);
+       this.author=chef;
+
+       this.toggleSlider();
+   }
 
 
 
@@ -69,6 +113,9 @@ export class EditorComponent implements OnInit {
     this.sliderComponent.togglevisible();
   }
 
+
+
+
   mouseOver(event: any, index: number) {
     this.higlightedWord = index;
     this.wordsRelatedToHighlighted = this.words[index].connectsTo;
@@ -77,7 +124,6 @@ export class EditorComponent implements OnInit {
     this.higlightedWord = -1;
     this.wordsRelatedToHighlighted = [];
   }
-
 
 
 
@@ -100,7 +146,7 @@ export class EditorComponent implements OnInit {
         //console.log(separatorPosition, wordToAdd, wordToStay);
         event.target.innerText = wordToStay;
         //  this.words.splice(index, 0, wordToAdd);
-        this.addAWord(wordToAdd, "", "human", index);
+        this.addAWord(wordToAdd, "", this.author, index);
       }
 
     } else if (value == 'Arrow Left') {
@@ -115,6 +161,7 @@ export class EditorComponent implements OnInit {
         FocusOnElement(nextElement);
       }
     } else if (value == 'Click') {
+      this.words[index].author=this.author;
       event.stopPropagation();
     } else if (value == 'BackSpace') {
     }
@@ -167,7 +214,7 @@ export class EditorComponent implements OnInit {
     } else {
       //try to understand the sentence
       this.understandSentence();
-      this.addAWord("ingredient", "ingredient", "machine", getRandom(0, 3));
+      //this.addAWord("ingredient", "ingredient", this.author, getRandom(0, 3));
     }
   }
 
@@ -283,6 +330,7 @@ export class EditorComponent implements OnInit {
   ngOnInit() {
     console.log("started");
     this.addChef();
+    this.setAuthorToHuman();
   }
 
   addChef() {

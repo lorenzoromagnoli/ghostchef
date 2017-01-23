@@ -10,8 +10,9 @@
       <span class="plus" *ngIf="chef.isActive">
         +
       </span>
-      <span class="name bg-{{chef.color}}" *ngIf="chef.isActive">
-        {{chef.nation}} {{chef.name}}
+      <span class="name bg-{{chef.color}}" *ngIf="chef.isActive" (click)="notifyChefClicked(chef)">
+        {{chef.nation}}
+        {{chef.name}}
       </span>
     </div>
   </div>

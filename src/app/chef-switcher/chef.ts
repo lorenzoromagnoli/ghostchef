@@ -3,13 +3,19 @@ export class Chef {
   name:string;
   nation:string;
   attributes:string;
-  variables:string[];
+  variables=[];
   isActive:boolean;
+  style;
 
    constructor(name:string, color:string, nation:string) {
      this.name=name;
      this.color=color;
      this.nation=nation;
+   }
+
+   addVariable(key, value){
+     var v={'key':key,'value':value};
+     this.variables.push(v);
    }
 
   setColor(color){
