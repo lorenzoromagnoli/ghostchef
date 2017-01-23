@@ -3,7 +3,7 @@ webpackJsonp([1,3],{
 /***/ 1120:
 /***/ function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(493);
+module.exports = __webpack_require__(494);
 
 
 /***/ },
@@ -45,6 +45,41 @@ var AppComponent = (function () {
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return Chef; });
+var Chef = (function () {
+    function Chef(name, color, nation) {
+        this.variables = [];
+        this.name = name;
+        this.color = color;
+        this.nation = nation;
+    }
+    Chef.prototype.addVariable = function (key, value) {
+        var v = { 'key': key, 'value': value };
+        this.variables.push(v);
+    };
+    Chef.prototype.setColor = function (color) {
+        this.color = color;
+    };
+    Chef.prototype.activate = function () {
+        this.isActive = true;
+        console.log("this.name");
+    };
+    Chef.prototype.disable = function () {
+        this.isActive = false;
+    };
+    Chef.prototype.toggleActive = function () {
+        this.isActive = !this.isActive;
+    };
+    return Chef;
+}());
+//# sourceMappingURL=/Users/Lorenzo/development/writeFood3/src/chef.js.map
+
+/***/ },
+
+/***/ 423:
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return SideSliderComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -59,11 +94,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var SideSliderComponent = (function () {
     function SideSliderComponent() {
+        this.options = [];
         this.isVisible = false;
     }
     SideSliderComponent.prototype.togglevisible = function () {
         console.log("collapsing side panel");
         this.isVisible = !this.isVisible;
+    };
+    SideSliderComponent.prototype.setChef = function (chef) {
+        this.options = chef.variables;
+        this.chefName = chef.name;
+        this.chefnation = chef.nation;
+        this.chefStyle = chef.style;
+        this.chefColor = chef.color;
     };
     SideSliderComponent.prototype.ngOnInit = function () {
     };
@@ -79,7 +122,7 @@ var SideSliderComponent = (function () {
             animations: [
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["trigger"])('visibilityChanged', [
                     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["state"])('true', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["style"])({ width: '30%', opacity: 1 })),
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["state"])('false', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["style"])({ width: '0%', opacity: 0 })),
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["state"])('false', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["style"])({ width: '0%', opacity: 0, display: 'none' })),
                     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["transition"])('* => *', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["animate"])('300ms')),
                 ])
             ]
@@ -92,7 +135,7 @@ var SideSliderComponent = (function () {
 
 /***/ },
 
-/***/ 492:
+/***/ 493:
 /***/ function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -101,18 +144,18 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 492;
+webpackEmptyContext.id = 493;
 
 
 /***/ },
 
-/***/ 493:
+/***/ 494:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfills_ts__ = __webpack_require__(614);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfills_ts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__polyfills_ts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(576);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(577);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(613);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app___ = __webpack_require__(611);
@@ -129,7 +172,7 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 
 /***/ },
 
-/***/ 606:
+/***/ 607:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -139,9 +182,9 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(356);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(421);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__editor_editor_component__ = __webpack_require__(609);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__chef_switcher_chef_switcher_component__ = __webpack_require__(607);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ng_bootstrap_ng_bootstrap__ = __webpack_require__(602);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__side_slider_side_slider_component__ = __webpack_require__(422);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__chef_switcher_chef_switcher_component__ = __webpack_require__(608);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ng_bootstrap_ng_bootstrap__ = __webpack_require__(603);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__side_slider_side_slider_component__ = __webpack_require__(423);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_primeng_primeng__ = __webpack_require__(834);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_primeng_primeng__);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AppModule; });
@@ -195,12 +238,12 @@ var AppModule = (function () {
 
 /***/ },
 
-/***/ 607:
+/***/ 608:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chef__ = __webpack_require__(608);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chef__ = __webpack_require__(422);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return ChefSwitcherComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -215,15 +258,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var ChefSwitcherComponent = (function () {
     function ChefSwitcherComponent() {
+        this.notify = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
+    ;
+    ChefSwitcherComponent.prototype.notifyChefClicked = function (c) {
+        console.log(c.name + "was clicked");
+        this.notify.emit(c);
+    };
     ChefSwitcherComponent.prototype.ngOnInit = function () {
         this.chefs = [];
-        var lorenzo = new __WEBPACK_IMPORTED_MODULE_1__chef__["a" /* Chef */]("Lorenzo", "green");
-        this.chefs.push(lorenzo);
-        var mario = new __WEBPACK_IMPORTED_MODULE_1__chef__["a" /* Chef */]("Mario", "yellow");
-        this.chefs.push(mario);
+        var thomas = new __WEBPACK_IMPORTED_MODULE_1__chef__["a" /* Chef */]("Thomas", "green", "🇩🇰");
+        thomas.style = "thomas likes to cook healthy food";
+        thomas.addVariable("local", 23);
+        thomas.addVariable("fair", 54);
+        thomas.addVariable("cheap", 63);
+        thomas.addVariable("organic", 18);
+        this.chefs.push(thomas);
+        var kae = new __WEBPACK_IMPORTED_MODULE_1__chef__["a" /* Chef */]("Kae", "yellow", "🇯🇵");
+        kae.addVariable("tasty", 23);
+        kae.addVariable("pure", 10);
+        kae.addVariable("simple", 63);
+        kae.addVariable("organic", 82);
+        this.chefs.push(kae);
+        var federico = new __WEBPACK_IMPORTED_MODULE_1__chef__["a" /* Chef */]("Federico", "pink", "🇨🇴");
+        this.chefs.push(federico);
+        var vincenzina = new __WEBPACK_IMPORTED_MODULE_1__chef__["a" /* Chef */]("Vincenzina", "orange", "🇮🇹");
+        this.chefs.push(vincenzina);
+        var tony = new __WEBPACK_IMPORTED_MODULE_1__chef__["a" /* Chef */]("Tony", "teal", "🇨🇳");
+        this.chefs.push(tony);
         console.log(this.chefs);
     };
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
+        __metadata('design:type', Object)
+    ], ChefSwitcherComponent.prototype, "notify", void 0);
     ChefSwitcherComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-chef-switcher',
@@ -238,43 +306,15 @@ var ChefSwitcherComponent = (function () {
 
 /***/ },
 
-/***/ 608:
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return Chef; });
-var Chef = (function () {
-    function Chef(name, color) {
-        this.name = name;
-        this.color = color;
-    }
-    Chef.prototype.setColor = function (color) {
-        this.color = color;
-    };
-    Chef.prototype.activate = function () {
-        this.isActive = true;
-        console.log("this.name");
-    };
-    Chef.prototype.disable = function () {
-        this.isActive = false;
-    };
-    Chef.prototype.toggleActive = function () {
-        this.isActive = !this.isActive;
-    };
-    return Chef;
-}());
-//# sourceMappingURL=/Users/Lorenzo/development/writeFood3/src/chef.js.map
-
-/***/ },
-
 /***/ 609:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__word__ = __webpack_require__(610);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_food_data_service__ = __webpack_require__(612);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__side_slider_side_slider_component__ = __webpack_require__(422);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chef_switcher_chef__ = __webpack_require__(422);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_food_data_service__ = __webpack_require__(612);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__side_slider_side_slider_component__ = __webpack_require__(423);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return EditorComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -289,13 +329,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var EditorComponent = (function () {
     function EditorComponent(foodDataService) {
         this.foodDataService = foodDataService;
+        this.humanAuthor = new __WEBPACK_IMPORTED_MODULE_2__chef_switcher_chef__["a" /* Chef */]("human", "white", "🇩🇰");
         this.isCollapsed = false;
         this.text = '';
         this.fullWidth = false;
-        this.placeholderWord = new __WEBPACK_IMPORTED_MODULE_1__word__["a" /* Word */]("...", "human");
+        this.placeholderWord = new __WEBPACK_IMPORTED_MODULE_1__word__["a" /* Word */]("what should we eat?", "human");
+        // { 'word': '...', 'type': 'ingredient', 'author': 'user', 'isEntity':false };
+        //all the code for the animation of the recording button.
+        this.recording = true;
+        this.recordingAnimationStatus = false;
+        this.recordingTimer = window.setInterval(this.toggleRecordingAnimation.bind(this), 1000);
         this.words = [this.placeholderWord];
         this.focussedWordPosition = 0;
         this.nothingHappeningTimer = window.setInterval(this.getComputeraction.bind(this), this.timetowait);
@@ -305,6 +352,33 @@ var EditorComponent = (function () {
         this.wordsRelatedToHighlighted = [];
         this.foodDataService = foodDataService;
     }
+    EditorComponent.prototype.setAuthorToHuman = function () {
+        this.author = this.humanAuthor;
+    };
+    EditorComponent.prototype.toggleRecording = function () {
+        this.recording = !this.recording;
+        if (this.recording) {
+            window.clearInterval(this.recordingTimer);
+            this.recordingTimer = window.setInterval(this.toggleRecordingAnimation.bind(this), 1000);
+        }
+        else {
+            window.clearInterval(this.recordingTimer);
+        }
+    };
+    EditorComponent.prototype.toggleRecordingAnimation = function () {
+        this.recordingAnimationStatus = !this.recordingAnimationStatus;
+    };
+    //I'm receiving an event from the chef switcher component
+    EditorComponent.prototype.onChefNotify = function (chef) {
+        console.log(chef);
+        console.log(this.author);
+        if (this.isCollapsed) {
+            this.toggleSlider();
+        }
+        this.sliderComponent.setChef(chef);
+        this.author = chef;
+        this.toggleSlider();
+    };
     EditorComponent.prototype.toggleSlider = function () {
         this.isCollapsed = !this.isCollapsed;
         this.sliderComponent.togglevisible();
@@ -336,7 +410,7 @@ var EditorComponent = (function () {
                 //console.log(separatorPosition, wordToAdd, wordToStay);
                 event.target.innerText = wordToStay;
                 //  this.words.splice(index, 0, wordToAdd);
-                this.addAWord(wordToAdd, "", "human", index);
+                this.addAWord(wordToAdd, "", this.author, index);
             }
         }
         else if (value == 'Arrow Left') {
@@ -353,6 +427,7 @@ var EditorComponent = (function () {
             }
         }
         else if (value == 'Click') {
+            this.words[index].author = this.author;
             event.stopPropagation();
         }
         else if (value == 'BackSpace') {
@@ -403,7 +478,6 @@ var EditorComponent = (function () {
         else {
             //try to understand the sentence
             this.understandSentence();
-            this.addAWord("ingredient", "ingredient", "machine", getRandom(0, 3));
         }
     };
     EditorComponent.prototype.understandSentence = function () {
@@ -506,6 +580,7 @@ var EditorComponent = (function () {
     EditorComponent.prototype.ngOnInit = function () {
         console.log("started");
         this.addChef();
+        this.setAuthorToHuman();
     };
     EditorComponent.prototype.addChef = function () {
         var _this = this;
@@ -576,8 +651,8 @@ var EditorComponent = (function () {
         }
     };
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_3__side_slider_side_slider_component__["a" /* SideSliderComponent */]), 
-        __metadata('design:type', (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__side_slider_side_slider_component__["a" /* SideSliderComponent */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__side_slider_side_slider_component__["a" /* SideSliderComponent */]) === 'function' && _a) || Object)
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_4__side_slider_side_slider_component__["a" /* SideSliderComponent */]), 
+        __metadata('design:type', (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__side_slider_side_slider_component__["a" /* SideSliderComponent */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__side_slider_side_slider_component__["a" /* SideSliderComponent */]) === 'function' && _a) || Object)
     ], EditorComponent.prototype, "sliderComponent", void 0);
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
@@ -588,7 +663,7 @@ var EditorComponent = (function () {
             selector: 'app-editor',
             template: __webpack_require__(842),
             styles: [__webpack_require__(838)],
-            providers: [__WEBPACK_IMPORTED_MODULE_2__services_food_data_service__["a" /* FoodDataService */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_3__services_food_data_service__["a" /* FoodDataService */]],
             animations: [
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["trigger"])('collapsedChanged', [
                     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["state"])('true', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["style"])({ width: '70%' })),
@@ -597,7 +672,7 @@ var EditorComponent = (function () {
                 ])
             ]
         }), 
-        __metadata('design:paramtypes', [(typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_food_data_service__["a" /* FoodDataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__services_food_data_service__["a" /* FoodDataService */]) === 'function' && _b) || Object])
+        __metadata('design:paramtypes', [(typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_food_data_service__["a" /* FoodDataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__services_food_data_service__["a" /* FoodDataService */]) === 'function' && _b) || Object])
     ], EditorComponent);
     return EditorComponent;
     var _a, _b;
@@ -646,7 +721,7 @@ var Word = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_component__ = __webpack_require__(421);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(606);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(607);
 /* unused harmony namespace reexport */
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__app_module__["a"]; });
 
@@ -822,21 +897,21 @@ module.exports = ".ui-slider {\n  background-color: #e6e6e6;\n  border-color: #e
 /***/ 837:
 /***/ function(module, exports) {
 
-module.exports = ".bg-teal {\n  background-color: #50D9E3; }\n\n.bg-green {\n  background-color: #50E3C2; }\n\n.bg-yellow {\n  background-color: #EADF54; }\n\n.bg-pink {\n  background-color: #D776EB; }\n\n.bigButton {\n  background-color: #D776EB;\n  border-radius: 20px;\n  width: 40px;\n  height: 40px; }\n\n.chef-switcher {\n  text-align: right;\n  width: 95%;\n  margin-top: -11px;\n  padding: 6px 8px; }\n\n.addChef {\n  float: right;\n  margin-top: -11px;\n  padding-top: 6px;\n  margin-right: 0px;\n  padding-right: 8px; }\n\n.active-chef-list {\n  display: inline-block;\n  margin-right: 80px; }\n  .active-chef-list .chef {\n    display: inline-block; }\n    .active-chef-list .chef span {\n      height: 40px;\n      padding: 10px; }\n\n.addChef-menu {\n  right: 0px;\n  text-align: right;\n  float: right;\n  min-width: 127px;\n  padding: 0px;\n  top: 40px; }\n  .addChef-menu .dropdown-item {\n    height: 40px; }\n    .addChef-menu .dropdown-item .inner {\n      width: 100%; }\n      .addChef-menu .dropdown-item .inner.active .icon {\n        color: white; }\n"
+module.exports = ".chef-switcher {\n  text-align: right;\n  width: 95%;\n  margin-top: -11px;\n  padding: 6px 8px; }\n\n.addChef {\n  float: right;\n  margin-top: -10px;\n  margin-right: 0px; }\n\n.active-chef-list {\n  display: inline-block;\n  margin-right: 10px; }\n  .active-chef-list .chef {\n    display: inline-block; }\n    .active-chef-list .chef span {\n      height: 40px;\n      padding: 10px; }\n\n.addChef-menu {\n  right: 0px;\n  text-align: right;\n  float: right;\n  min-width: 127px;\n  padding: 0px;\n  top: 40px; }\n  .addChef-menu .dropdown-item {\n    height: 40px; }\n    .addChef-menu .dropdown-item .inner {\n      width: 100%; }\n      .addChef-menu .dropdown-item .inner.active .icon {\n        color: white; }\n"
 
 /***/ },
 
 /***/ 838:
 /***/ function(module, exports) {
 
-module.exports = ".title {\n  /* Ghost_Chef: */\n  font-family: Roboto-Regular;\n  font-size: 12px;\n  color: #D4D4D4;\n  letter-spacing: 0;\n  margin-top: 20px; }\n\n.bigButton {\n  background-color: #50D9E3;\n  border-radius: 20px;\n  width: 40px;\n  height: 40px; }\n\n.pauseButton.bigButton {\n  float: right;\n  margin-top: -45px;\n  padding: 6px 8px; }\n\n#editor {\n  float: left;\n  font-size: 2em;\n  display: block;\n  height: 400px; }\n  #editor.fullWidth {\n    width: 100%; }\n  #editor.collapsed {\n    width: 70%; }\n\n.autocomplete {\n  background-color: #aaaaaa; }\n\nsup {\n  top: -1.5em;\n  font-size: 8px; }\n\n.word {\n  min-width: 40px;\n  display: inline-block; }\n  .word.attribute {\n    border-bottom: 2px dashed yellow; }\n  .word.entity {\n    border-bottom: 2px solid yellow; }\n  .word.machine {\n    border-bottom: 2px solid violet; }\n  .word.isHighlighted {\n    font-weight: bold;\n    color: #000; }\n  .word.isRelated {\n    font-weight: bold; }\n  .word.isNotRelated {\n    color: #aaa; }\n\n.controls {\n  position: fixed;\n  bottom: 20px; }\n\n.word.machine {\n  border-bottom: 2px solid violet; }\n\n.pauseButton .hidden {\n  display: none; }\n"
+module.exports = "#title {\n  /* Ghost_Chef: */\n  color: #888;\n  font-family: 'Roboto Mono', monospace;\n  display: inline-block;\n  margin-top: 20px;\n  position: fixed;\n  background-color: white; }\n  #title h1 {\n    padding: 0px 10px;\n    font-size: 12px;\n    display: inline-block; }\n\n.topBar.tools {\n  position: fixed;\n  margin-top: 40px;\n  width: 100%;\n  display: block;\n  max-width: 970px; }\n\n.recordButton.bigButton {\n  float: right;\n  margin-top: -45px; }\n\n.pauseButton.bigButton {\n  float: right;\n  margin-top: -45px;\n  margin-right: 25px; }\n\n#editor {\n  float: left;\n  font-size: 2em;\n  display: block; }\n  #editor.fullWidth {\n    width: 100%; }\n  #editor.collapsed {\n    width: 70%; }\n\n.autocomplete {\n  background-color: #aaaaaa; }\n\nsup {\n  top: -1.5em;\n  font-size: 8px; }\n\n.word {\n  min-width: 40px;\n  display: inline-block; }\n  .word.attribute {\n    border-bottom: 2px dashed yellow; }\n  .word.entity {\n    border-bottom: 2px solid yellow; }\n  .word.machine {\n    border-bottom: 2px solid violet; }\n  .word.isHighlighted {\n    font-weight: bold;\n    color: #000; }\n  .word.isRelated {\n    font-weight: bold; }\n  .word.isNotRelated {\n    color: #aaa; }\n\n.controls {\n  position: fixed;\n  bottom: 20px; }\n\n.word.machine {\n  border-bottom: 2px solid violet; }\n\n.pauseButton .hidden {\n  display: none; }\n"
 
 /***/ },
 
 /***/ 839:
 /***/ function(module, exports) {
 
-module.exports = "#sideSlider{\n  max-width: 30%;\nfloat: right;\npadding: 20px;\nbackground-color: ;\nmargin: 50px 0;\n}\n"
+module.exports = "#sideSlider{\n  max-width: 30%;\nfloat: right;\npadding-left: 40px;\nbackground-color: ;\nmargin: 130px 0;\n}\n"
 
 /***/ },
 
@@ -850,21 +925,21 @@ module.exports = ""
 /***/ 841:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"chef-switcher row\">\n\n  <div class=\"active-chef-list\">\n    <div class=\"chef\">\n      <span class=\"name bg-teal\">\n        You\n      </span>\n    </div>\n    <div class=\"chef\" *ngFor=\"let chef of chefs; let i = index\">\n      <span class=\"plus\" *ngIf=\"chef.isActive\">\n        +\n      </span>\n      <span class=\"name bg-{{chef.color}}\" *ngIf=\"chef.isActive\">\n        {{chef.name}}\n      </span>\n    </div>\n  </div>\n\n  <span class=\"addChef fa fa-plus fa-2x bigButton bg-teal\" *ngIf=\"activeChef==null\" (click)=\"$event.stopPropagation(); myDrop.open();\"></span>\n\n  <div ngbDropdown #myDrop=\"ngbDropdown\" class=\"d-inline-block addChef-menu\">\n    <!-- <button class=\"btn btn-outline\" id=\"dropdownMenu1\" ngbDropdownToggle>Toggle dropdown</button> -->\n    <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">\n      <button *ngFor=\"let chef of chefs; let i = index\" class=\"dropdown-item bg-{{chef.color}}\">\n\n        <div class=\"inner\" (click)=\"chef.toggleActive()\" [ngClass]=\"{'active': chef.isActive }\">\n\n          <span class=\"icon fa fa-dot-circle-o fa-1x\"></span>\n\n          <span class=\"name\">\n            {{chef.name}}\n          </span>\n\n        </div>\n\n      </button>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"chef-switcher row\">\n\n  <div class=\"active-chef-list\">\n    <div class=\"chef\">\n      <span class=\"name bg-teal\">\n        You\n      </span>\n    </div>\n    <div class=\"chef\" *ngFor=\"let chef of chefs; let i = index\">\n      <span class=\"plus\" *ngIf=\"chef.isActive\">\n        +\n      </span>\n      <span class=\"name bg-{{chef.color}}\" *ngIf=\"chef.isActive\" (click)=\"notifyChefClicked(chef)\">\n        {{chef.nation}}\n        {{chef.name}}\n      </span>\n    </div>\n  </div>\n\n  <span class=\"addChef fa fa-plus fa-1x bigButton bg-teal\" *ngIf=\"activeChef==null\" (click)=\"$event.stopPropagation(); myDrop.open();\"></span>\n\n  <div ngbDropdown #myDrop=\"ngbDropdown\" class=\"d-inline-block addChef-menu\">\n    <!-- <button class=\"btn btn-outline\" id=\"dropdownMenu1\" ngbDropdownToggle>Toggle dropdown</button> -->\n    <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">\n      <button *ngFor=\"let chef of chefs; let i = index\" class=\"dropdown-item bg-{{chef.color}}\">\n\n        <div class=\"inner\" (click)=\"chef.toggleActive()\" [ngClass]=\"{'active': chef.isActive }\">\n\n          <span class=\"icon\">{{chef.nation}}</span>\n\n          <span class=\"name\">\n            {{chef.name}}\n          </span>\n\n        </div>\n\n      </button>\n    </div>\n  </div>\n</div>\n"
 
 /***/ },
 
 /***/ 842:
 /***/ function(module, exports) {
 
-module.exports = "<!-- <input (keyup)=\"onUpdate($event)\" (click)=\"onUpdate($event)\"> -->\n<div class=\"container\">\n  <div class=\"row\">\n    <div id=\"title\">\n      <h1 class=\"title\">ghostChef</h1>\n    </div>\n  </div>\n\n  <app-chef-switcher>\n    Loading...\n  </app-chef-switcher>\n\n  <span class=\"pauseButton bigButton bg-pink\" (click)=\"togglePause()\">\n    <span class=\"fa fa-play fa-2x\" [ngClass]=\"{'hidden': !isAiPaused }\"></span>\n    <span class=\"fa fa-stop fa-2x\" [ngClass]=\"{'hidden': isAiPaused }\"></span>\n  </span>\n\n  <div class=\"row\">\n    <div id=\"editor\" [@collapsedChanged]=\"isCollapsed\" [ngClass]=\"{'fullWidth': fullWidth, 'collapsed': !fullWidth}\">\n\n      <span *ngFor=\"let word of words; let i = index\">\n        <span\n          class=\"word {{word.author}}\"\n          contenteditable=\"true\"\n          (keydown)=\"handleKeyEvent($event,'key',i)\"\n          (keydown.Enter)=\"handleKeyEvent( $event, 'Enter', i )\"\n          (keydown.ArrowLeft)=\"handleKeyEvent( $event, 'Arrow Left', i )\"\n          (keydown.ArrowUp)=\"handleKeyEvent( $event, 'Arrow Up', i )\"\n          (keydown.ArrowRight)=\"handleKeyEvent( $event, 'Arrow Right', i )\"\n          (keydown.ArrowDown)=\"handleKeyEvent( $event, 'Arrow Down', i )\"\n          (keydown.Space)=\"handleKeyEvent( $event, 'Space', i )\"\n          (keydown.BackSpace)=\"handleKeyEvent( $event, 'BackSpace', i )\"\n          (blur)=\"handleKeyEvent( $event, 'Blur', i )\"\n          (click)=\"handleKeyEvent( $event, 'Click', i )\"\n          [ngClass]=\"{\n                      'entity': word.isEntity,\n                      'attribute': word.isAttribute,\n                      'isHighlighted': i==higlightedWord,\n                      'isRelated': wordsRelatedToHighlighted.indexOf(i)!=-1,\n                      'isNotRelated': higlightedWord!=-1 && wordsRelatedToHighlighted.indexOf(i)==-1 && i!=higlightedWord\n                    }\"\n          (mouseover)=\"mouseOver($event, i)\"\n          (mouseout)=\"mouseLeave($event, i)\"\n\n            >{{word.word}}</span>\n            <sup class=\"apex\">{{word.dependencyEdge}}</sup>\n            <sup class=\"apex\">_{{word.dependencyType}}</sup>\n\n        <!-- <span class=\"autocomplete\" [hidden]=\"i!=focussedWordPosition\">{{word}}</span> -->\n      </span>\n    </div>\n\n\n\n\n    <app-side-slider >\n      Loading...\n    </app-side-slider>\n\n\n\n  </div>\n\n\n\n\n\n\n\n  <div class=\"row controls\">\n    <span class=\"pauseButton\" (click)=\"togglePause()\">\n      <span class=\"fa fa-play fa-1x\" [ngClass]=\"{'hidden': !isAiPaused }\"></span>\n      <span class=\"fa fa-stop fa-1x\" [ngClass]=\"{'hidden': isAiPaused }\"></span>\n      autopilot\n    </span>\n    <span class=\"analyzeText\" (click)=\"understandSentence()\">\n      <span class=\"fa fa-eyedropper fa-1x\" ></span>\n      analyze-text\n    </span>\n    <span class=\"addPreparation\" (click)=\"addPreparation()\">\n      <span class=\"fa fa-edit fa-1x\" ></span>\n      add preparation\n    </span>\n    <span class=\"addIngredient\" (click)=\"addIngredient()\">\n      <span class=\"fa fa-edit fa-1x\" ></span>\n      add ingredient\n    </span>\n\n    <span class=\"toggleSlider\" (click)=\"toggleSlider()\">\n      <span class=\"fa fa-sliders fa-1x\" ></span>\n      toggleSlider\n    </span>\n    <!-- {{focussedWordPosition}} -->\n  </div>\n</div>\n"
+module.exports = "<!-- <input (keyup)=\"onUpdate($event)\" (click)=\"onUpdate($event)\"> -->\n<div class=\"container\">\n  <div class=\"row\">\n    <div id=\"title\">\n      <span class=\"em em-ghost\"></span> <span class=\"em em-egg\"></span>\n      <h1 >   Ghost Chef</h1>\n    </div>\n  </div>\n\n  <div class=\"row \">\n    <div class=\"topBar tools\">\n\n  <app-chef-switcher (notify)='onChefNotify($event)'>\n    Loading...\n  </app-chef-switcher>\n\n  <span class=\"pauseButton bigButton bg-pink\" (click)=\"togglePause()\">\n    <span class=\"fa fa-play fa-1x\" [ngClass]=\"{'hidden': !isAiPaused }\"></span>\n    <span class=\"fa fa-stop fa-1x\" [ngClass]=\"{'hidden': isAiPaused }\"></span>\n  </span>\n\n  <span class=\"recordButton bigButton bg-red\" (click)=\"toggleRecording()\" [ngClass]=\"{'faded': recordingAnimationStatus}\">\n    <span class=\"fa fa-circle fa-1x\" ></span>\n  </span>\n  </div>\n</div>\n\n  <div class=\"row\">\n    <div id=\"editor\" [@collapsedChanged]=\"isCollapsed\" [ngClass]=\"{'fullWidth': fullWidth, 'collapsed': !fullWidth}\">\n\n      <span *ngFor=\"let word of words; let i = index\">\n        <span\n          class=\"word {{word.author.color}}\"\n          contenteditable=\"true\"\n          (keydown)=\"handleKeyEvent($event,'key',i)\"\n          (keydown.Enter)=\"handleKeyEvent( $event, 'Enter', i )\"\n          (keydown.ArrowLeft)=\"handleKeyEvent( $event, 'Arrow Left', i )\"\n          (keydown.ArrowUp)=\"handleKeyEvent( $event, 'Arrow Up', i )\"\n          (keydown.ArrowRight)=\"handleKeyEvent( $event, 'Arrow Right', i )\"\n          (keydown.ArrowDown)=\"handleKeyEvent( $event, 'Arrow Down', i )\"\n          (keydown.Space)=\"handleKeyEvent( $event, 'Space', i )\"\n          (keydown.BackSpace)=\"handleKeyEvent( $event, 'BackSpace', i )\"\n          (blur)=\"handleKeyEvent( $event, 'Blur', i )\"\n          (click)=\"handleKeyEvent( $event, 'Click', i )\"\n          [ngClass]=\"{\n                      'entity': word.isEntity,\n                      'attribute': word.isAttribute,\n                      'isHighlighted': i==higlightedWord,\n                      'isRelated': wordsRelatedToHighlighted.indexOf(i)!=-1,\n                      'isNotRelated': higlightedWord!=-1 && wordsRelatedToHighlighted.indexOf(i)==-1 && i!=higlightedWord\n                    }\"\n          (mouseover)=\"mouseOver($event, i)\"\n          (mouseout)=\"mouseLeave($event, i)\"\n\n            >{{word.word}}</span>\n            <sup class=\"apex\">{{word.dependencyEdge}}</sup>\n            <sup class=\"apex\">_{{word.dependencyType}}</sup>\n\n        <!-- <span class=\"autocomplete\" [hidden]=\"i!=focussedWordPosition\">{{word}}</span> -->\n      </span>\n    </div>\n\n\n\n\n    <app-side-slider >\n      Loading...\n    </app-side-slider>\n\n  </div>\n\n\n\n\n\n\n\n  <div class=\"row controls\">\n    <span class=\"pauseButton\" (click)=\"togglePause()\">\n      <span class=\"fa fa-play fa-1x\" [ngClass]=\"{'hidden': !isAiPaused }\"></span>\n      <span class=\"fa fa-stop fa-1x\" [ngClass]=\"{'hidden': isAiPaused }\"></span>\n      autopilot\n    </span>\n    <span class=\"analyzeText\" (click)=\"understandSentence()\">\n      <span class=\"fa fa-eyedropper fa-1x\" ></span>\n      analyze-text\n    </span>\n    <span class=\"addPreparation\" (click)=\"addPreparation()\">\n      <span class=\"fa fa-edit fa-1x\" ></span>\n      add preparation\n    </span>\n    <span class=\"addIngredient\" (click)=\"addIngredient()\">\n      <span class=\"fa fa-edit fa-1x\" ></span>\n      add ingredient\n    </span>\n\n    <span class=\"toggleSlider\" (click)=\"toggleSlider()\">\n      <span class=\"fa fa-sliders fa-1x\" ></span>\n      toggleSlider\n    </span>\n    <!-- {{focussedWordPosition}} -->\n  </div>\n</div>\n"
 
 /***/ },
 
 /***/ 843:
 /***/ function(module, exports) {
 
-module.exports = "<div id=\"sideSlider\" ng-show=\"!collapsed\" [@visibilityChanged]=\"isVisible\">\n  <div class=\"header\"></div>\n\n  season\n  <p-slider [(ngModel)]=\"val1\" [style]=\"{'width':'100%'}\" [styleClass]=\"sideSlider\"></p-slider>\n  light\n  <p-slider [(ngModel)]=\"val2\" [style]=\"{'width':'100%'}\" [styleClass]=\"sideSlider\"></p-slider>\n  price\n  <p-slider [(ngModel)]=\"val3\" [style]=\"{'width':'100%'}\" [styleClass]=\"sideSlider\"></p-slider>\n\n</div>\n"
+module.exports = "<div id=\"sideSlider\" class=\"{{chefColor}}\" ng-show=\"!collapsed\" [@visibilityChanged]=\"isVisible\">\n  <div class=\"header\">\n    <h3>{{chefName}} {{chefnation}}</h3>\n    {{chefStyle}}\n  </div>\n\n\n  <div class=\"option\" *ngFor=\"let option of options; let i = index\">\n    {{option.key}}\n    <p-slider [(ngModel)]=\"option.value\" [style]=\"{'width':'100%'}\" [styleClass]=\"sideSlider\"></p-slider>\n  </div>\n\n</div>\n"
 
 /***/ }
 
