@@ -1,31 +1,46 @@
-.title{
+#title{
   /* Ghost_Chef: */
-  font-family: Roboto-Regular;
-  font-size: 12px;
-  color: #D4D4D4;
-  letter-spacing: 0;
+  color: #888;
+  font-family: 'Roboto Mono', monospace;
+  display: inline-block;
   margin-top: 20px;
+  position: fixed;
+  background-color: white;
+
+
+  h1{
+    padding: 0px 10px;
+    font-size: 12px;
+    display: inline-block;
+  }
 }
 
-.bigButton{
-  background-color: #50D9E3;
-  border-radius: 20px;
-  width: 40px;
-  height: 40px;
+.topBar.tools{
+  position: fixed;
+  margin-top: 40px;
+  width: 100%;
+  display: block;
+  max-width: 970px;
+}
+
+
+.recordButton.bigButton{
+  float: right;
+  margin-top: -45px;
 }
 
 .pauseButton.bigButton{
   float: right;
+  margin-top: -45px;
+  margin-right: 25px;
 
-margin-top: -45px;
-  padding: 6px 8px;
+
 }
 
   #editor {
       float: left;
       font-size: 2em;
       display: block;
-      height: 400px;
       //background-color: #eee;
 
       &.fullWidth{

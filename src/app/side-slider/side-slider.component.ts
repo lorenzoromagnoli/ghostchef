@@ -17,7 +17,7 @@ import {SliderModule} from 'primeng/primeng';
   animations: [
     trigger('visibilityChanged', [
       state('true' , style({ width: '30%', opacity: 1})),
-      state('false', style({ width: '0%', opacity: 0 })),
+      state('false', style({ width: '0%', opacity: 0, display:'none' })),
       transition('* => *', animate('300ms')),
     ])
   ]

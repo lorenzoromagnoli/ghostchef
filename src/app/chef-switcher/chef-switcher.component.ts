@@ -19,12 +19,20 @@ export class ChefSwitcherComponent implements OnInit {
   ngOnInit() {
     this.chefs=[];
 
-    var lorenzo=new Chef("Lorenzo", "green");
-    this.chefs.push(lorenzo);
+    var thomas=new Chef("Thomas", "green", "🇩🇰");
+    this.chefs.push(thomas);
 
+    var kae=new Chef("Kae", "yellow", "🇯🇵");
+    this.chefs.push(kae);
 
-    var mario=new Chef("Mario", "yellow");
-    this.chefs.push(mario);
+    var federico=new Chef("Federico", "pink", "🇨🇴");
+    this.chefs.push(federico);
+
+    var vincenzina=new Chef("Vincenzina", "orange", "🇮🇹");
+    this.chefs.push(vincenzina);
+
+    var tony=new Chef("Tony", "teal", "🇨🇳");
+    this.chefs.push(tony);
 
     console.log(this.chefs);
   }

@@ -43,8 +43,11 @@ export class EditorComponent implements OnInit {
 
   text = '';
   fullWidth = false;
-  placeholderWord = new Word("...", "human")
+  placeholderWord = new Word("what should we eat?", "human")
   // { 'word': '...', 'type': 'ingredient', 'author': 'user', 'isEntity':false };
+
+
+  recording=false;
 
 
 

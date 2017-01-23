@@ -24,7 +24,37 @@ p, span{
     top: -5px !important;
 }
 
-
 #editor{
-  margin-top: 50px;
+  margin-top: 130px;
+max-height: 300px;
+overflow: scroll;
+}
+
+.bigButton{
+  border-radius: 20px;
+      width: 20px;
+      height: 40px;
+      color: #fff;
+      padding-top: 12px;
+      padding-left: 5px;
+      padding-right: 5px;
+}
+
+.bg-teal{
+  background-color: #50D9E3
+}
+.bg-green{
+  background-color: #50E3C2
+}
+.bg-yellow{
+  background-color: #EADF54
+}
+.bg-pink{
+  background-color: #D776EB
+}
+.bg-red{
+  background-color: #FF533E
+}
+.bg-orange{
+  background-color: #F6A623
 }

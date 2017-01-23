@@ -1,13 +1,15 @@
 export class Chef {
   color:string;
   name:string;
+  nation:string;
   attributes:string;
   variables:string[];
   isActive:boolean;
 
-   constructor(name:string, color:string) {
+   constructor(name:string, color:string, nation:string) {
      this.name=name;
      this.color=color;
+     this.nation=nation;
    }
 
   setColor(color){

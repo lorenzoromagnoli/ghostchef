@@ -11,12 +11,12 @@
         +
       </span>
       <span class="name bg-{{chef.color}}" *ngIf="chef.isActive">
-        {{chef.name}}
+        {{chef.nation}} {{chef.name}}
       </span>
     </div>
   </div>
 
-  <span class="addChef fa fa-plus fa-2x bigButton bg-teal" *ngIf="activeChef==null" (click)="$event.stopPropagation(); myDrop.open();"></span>
+  <span class="addChef fa fa-plus fa-1x bigButton bg-teal" *ngIf="activeChef==null" (click)="$event.stopPropagation(); myDrop.open();"></span>
 
   <div ngbDropdown #myDrop="ngbDropdown" class="d-inline-block addChef-menu">
     <!-- <button class="btn btn-outline" id="dropdownMenu1" ngbDropdownToggle>Toggle dropdown</button> -->
@@ -25,7 +25,7 @@
 
         <div class="inner" (click)="chef.toggleActive()" [ngClass]="{'active': chef.isActive }">
 
-          <span class="icon fa fa-dot-circle-o fa-1x"></span>
+          <span class="icon">{{chef.nation}}</span>
 
           <span class="name">
             {{chef.name}}
