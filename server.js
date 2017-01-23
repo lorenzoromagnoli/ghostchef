@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
+var emojiFavicon = require('emoji-favicon');
+
 
 
 var language = require('@google-cloud/language')({
@@ -34,6 +36,8 @@ var port = process.env.PORT || 8080;
 app.set('port', port);
 
 app.use(cors());
+
+app.use(emojiFavicon('ghost'));
 
 app.use(express.static(path.join(__dirname, 'dist')));
 

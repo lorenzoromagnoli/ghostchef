@@ -31,7 +31,7 @@ var AppComponent = (function () {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(840),
-            styles: [__webpack_require__(838)]
+            styles: [__webpack_require__(836)]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
@@ -228,7 +228,7 @@ var ChefSwitcherComponent = (function () {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-chef-switcher',
             template: __webpack_require__(841),
-            styles: [__webpack_require__(836)]
+            styles: [__webpack_require__(837)]
         }), 
         __metadata('design:paramtypes', [])
     ], ChefSwitcherComponent);
@@ -508,9 +508,10 @@ var EditorComponent = (function () {
         this.addChef();
     };
     EditorComponent.prototype.addChef = function () {
+        var _this = this;
         this.foodDataService.getAllFoods().then(function (data) {
             console.log("got data", data);
-            // this.foodData = JSON.parse(data);
+            _this.foodData = JSON.parse(data);
         });
     };
     EditorComponent.prototype.getFoodbyName = function () {
@@ -586,7 +587,7 @@ var EditorComponent = (function () {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-editor',
             template: __webpack_require__(842),
-            styles: [__webpack_require__(837)],
+            styles: [__webpack_require__(838)],
             providers: [__WEBPACK_IMPORTED_MODULE_2__services_food_data_service__["a" /* FoodDataService */]],
             animations: [
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["trigger"])('collapsedChanged', [
@@ -701,7 +702,8 @@ var FoodDataService = (function () {
             return Promise.resolve(this.allFood);
         }
         return new Promise(function (resolve) {
-            _this.http.get('http://localhost:8080/allfood')
+            //this.http.get('http://localhost:8080/allfood')
+            _this.http.get('/allfood')
                 .subscribe(function (data) {
                 console.log(data);
                 _this.data = data._body;
@@ -717,7 +719,8 @@ var FoodDataService = (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         return new Promise(function (resolve) {
-            _this.http.post('http://localhost:8080/understand?' + creds)
+            //this.http.post('http://localhost:8080/understand?' + creds)
+            _this.http.post('/understand?' + creds)
                 .subscribe(function (data) {
                 //  console.log(data._body);
                 _this.data = data._body;
@@ -812,28 +815,28 @@ var environment = {
 /***/ 836:
 /***/ function(module, exports) {
 
-module.exports = ".bg-teal {\n  background-color: #50D9E3; }\n\n.bg-green {\n  background-color: #50E3C2; }\n\n.bg-yellow {\n  background-color: #EADF54; }\n\n.bg-pink {\n  background-color: #D776EB; }\n\n.bigButton {\n  background-color: #D776EB;\n  border-radius: 20px;\n  width: 40px;\n  height: 40px; }\n\n.chef-switcher {\n  text-align: right;\n  width: 95%;\n  margin-top: -11px;\n  padding: 6px 8px; }\n\n.addChef {\n  float: right;\n  margin-top: -11px;\n  padding-top: 6px;\n  margin-right: 0px;\n  padding-right: 8px; }\n\n.active-chef-list {\n  display: inline-block; }\n  .active-chef-list .chef {\n    display: inline-block;\n    padding: 0px 9px; }\n    .active-chef-list .chef span {\n      height: 40px;\n      padding: 10px; }\n\n.addChef-menu {\n  right: 0px;\n  text-align: right;\n  float: right;\n  min-width: 127px;\n  padding: 0px;\n  top: 40px; }\n  .addChef-menu .dropdown-item .inner {\n    width: 100%; }\n    .addChef-menu .dropdown-item .inner.active .icon {\n      color: blue; }\n"
+module.exports = ".ui-slider {\n  background-color: #e6e6e6;\n  border-color: #e6e6e6;\n  height: 3px;\n  margin-top: 13px; }\n"
 
 /***/ },
 
 /***/ 837:
 /***/ function(module, exports) {
 
-module.exports = ".title {\n  /* Ghost_Chef: */\n  font-family: Roboto-Regular;\n  font-size: 12px;\n  color: #D4D4D4;\n  letter-spacing: 0;\n  margin-top: 20px; }\n\n.bigButton {\n  background-color: #50D9E3;\n  border-radius: 20px;\n  width: 40px;\n  height: 40px; }\n\n.pauseButton.bigButton {\n  float: right;\n  margin-top: -45px;\n  padding: 6px 8px; }\n\n#editor {\n  float: left;\n  font-size: 2em;\n  display: block;\n  height: 400px; }\n  #editor.fullWidth {\n    width: 100%; }\n  #editor.collapsed {\n    width: 70%; }\n\n.autocomplete {\n  background-color: #aaaaaa; }\n\nsup {\n  top: -1.5em;\n  font-size: 8px; }\n\n.word {\n  min-width: 40px;\n  display: inline-block; }\n  .word.attribute {\n    border-bottom: 2px dashed yellow; }\n  .word.entity {\n    border-bottom: 2px solid yellow; }\n  .word.machine {\n    border-bottom: 2px solid violet; }\n  .word.isHighlighted {\n    font-weight: bold;\n    color: #000; }\n  .word.isRelated {\n    font-weight: bold; }\n  .word.isNotRelated {\n    color: #aaa; }\n\n.controls {\n  position: fixed;\n  bottom: 20px; }\n\n.word.machine {\n  border-bottom: 2px solid violet; }\n\n.pauseButton .hidden {\n  display: none; }\n"
+module.exports = ".bg-teal {\n  background-color: #50D9E3; }\n\n.bg-green {\n  background-color: #50E3C2; }\n\n.bg-yellow {\n  background-color: #EADF54; }\n\n.bg-pink {\n  background-color: #D776EB; }\n\n.bigButton {\n  background-color: #D776EB;\n  border-radius: 20px;\n  width: 40px;\n  height: 40px; }\n\n.chef-switcher {\n  text-align: right;\n  width: 95%;\n  margin-top: -11px;\n  padding: 6px 8px; }\n\n.addChef {\n  float: right;\n  margin-top: -11px;\n  padding-top: 6px;\n  margin-right: 0px;\n  padding-right: 8px; }\n\n.active-chef-list {\n  display: inline-block;\n  margin-right: 80px; }\n  .active-chef-list .chef {\n    display: inline-block; }\n    .active-chef-list .chef span {\n      height: 40px;\n      padding: 10px; }\n\n.addChef-menu {\n  right: 0px;\n  text-align: right;\n  float: right;\n  min-width: 127px;\n  padding: 0px;\n  top: 40px; }\n  .addChef-menu .dropdown-item {\n    height: 40px; }\n    .addChef-menu .dropdown-item .inner {\n      width: 100%; }\n      .addChef-menu .dropdown-item .inner.active .icon {\n        color: white; }\n"
 
 /***/ },
 
 /***/ 838:
 /***/ function(module, exports) {
 
-module.exports = ""
+module.exports = ".title {\n  /* Ghost_Chef: */\n  font-family: Roboto-Regular;\n  font-size: 12px;\n  color: #D4D4D4;\n  letter-spacing: 0;\n  margin-top: 20px; }\n\n.bigButton {\n  background-color: #50D9E3;\n  border-radius: 20px;\n  width: 40px;\n  height: 40px; }\n\n.pauseButton.bigButton {\n  float: right;\n  margin-top: -45px;\n  padding: 6px 8px; }\n\n#editor {\n  float: left;\n  font-size: 2em;\n  display: block;\n  height: 400px; }\n  #editor.fullWidth {\n    width: 100%; }\n  #editor.collapsed {\n    width: 70%; }\n\n.autocomplete {\n  background-color: #aaaaaa; }\n\nsup {\n  top: -1.5em;\n  font-size: 8px; }\n\n.word {\n  min-width: 40px;\n  display: inline-block; }\n  .word.attribute {\n    border-bottom: 2px dashed yellow; }\n  .word.entity {\n    border-bottom: 2px solid yellow; }\n  .word.machine {\n    border-bottom: 2px solid violet; }\n  .word.isHighlighted {\n    font-weight: bold;\n    color: #000; }\n  .word.isRelated {\n    font-weight: bold; }\n  .word.isNotRelated {\n    color: #aaa; }\n\n.controls {\n  position: fixed;\n  bottom: 20px; }\n\n.word.machine {\n  border-bottom: 2px solid violet; }\n\n.pauseButton .hidden {\n  display: none; }\n"
 
 /***/ },
 
 /***/ 839:
 /***/ function(module, exports) {
 
-module.exports = "#sideSlider{\n  max-width: 30%;\n  float: right;\n\n  border: 1px solid black;\n  background-color: #aaaaaa;\n  padding: 20px;\n}\n"
+module.exports = "#sideSlider{\n  max-width: 30%;\nfloat: right;\npadding: 20px;\nbackground-color: ;\nmargin: 50px 0;\n}\n"
 
 /***/ },
 
@@ -847,7 +850,7 @@ module.exports = ""
 /***/ 841:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"chef-switcher row\">\n\n  <div class=\"active-chef-list\">\n    <div class=\"chef\">\n      <span class=\"name bg-teal\">\n        You\n      </span>\n    </div>\n    <div class=\"chef\" *ngFor=\"let chef of chefs; let i = index\">\n      <span class=\"name bg-{{chef.color}}\" *ngIf=\"chef.isActive\">\n        {{chef.name}}\n      </span>\n    </div>\n  </div>\n\n  <span class=\"addChef fa fa-plus fa-2x bigButton bg-teal\" *ngIf=\"activeChef==null\" (click)=\"$event.stopPropagation(); myDrop.open();\"></span>\n\n  <div ngbDropdown #myDrop=\"ngbDropdown\" class=\"d-inline-block addChef-menu\">\n    <!-- <button class=\"btn btn-outline\" id=\"dropdownMenu1\" ngbDropdownToggle>Toggle dropdown</button> -->\n    <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">\n      <button *ngFor=\"let chef of chefs; let i = index\" class=\"dropdown-item bg-{{chef.color}}\">\n\n        <div class=\"inner\" (click)=\"chef.toggleActive()\" [ngClass]=\"{'active': chef.isActive }\">\n\n          <span class=\"icon fa fa-dot-circle-o fa-1x\"></span>\n\n          <span class=\"name\">\n            {{chef.name}}\n          </span>\n\n        </div>\n\n      </button>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"chef-switcher row\">\n\n  <div class=\"active-chef-list\">\n    <div class=\"chef\">\n      <span class=\"name bg-teal\">\n        You\n      </span>\n    </div>\n    <div class=\"chef\" *ngFor=\"let chef of chefs; let i = index\">\n      <span class=\"plus\" *ngIf=\"chef.isActive\">\n        +\n      </span>\n      <span class=\"name bg-{{chef.color}}\" *ngIf=\"chef.isActive\">\n        {{chef.name}}\n      </span>\n    </div>\n  </div>\n\n  <span class=\"addChef fa fa-plus fa-2x bigButton bg-teal\" *ngIf=\"activeChef==null\" (click)=\"$event.stopPropagation(); myDrop.open();\"></span>\n\n  <div ngbDropdown #myDrop=\"ngbDropdown\" class=\"d-inline-block addChef-menu\">\n    <!-- <button class=\"btn btn-outline\" id=\"dropdownMenu1\" ngbDropdownToggle>Toggle dropdown</button> -->\n    <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">\n      <button *ngFor=\"let chef of chefs; let i = index\" class=\"dropdown-item bg-{{chef.color}}\">\n\n        <div class=\"inner\" (click)=\"chef.toggleActive()\" [ngClass]=\"{'active': chef.isActive }\">\n\n          <span class=\"icon fa fa-dot-circle-o fa-1x\"></span>\n\n          <span class=\"name\">\n            {{chef.name}}\n          </span>\n\n        </div>\n\n      </button>\n    </div>\n  </div>\n</div>\n"
 
 /***/ },
 
@@ -861,7 +864,7 @@ module.exports = "<!-- <input (keyup)=\"onUpdate($event)\" (click)=\"onUpdate($e
 /***/ 843:
 /***/ function(module, exports) {
 
-module.exports = "\n<div id=\"sideSlider\" ng-show=\"!collapsed\" [@visibilityChanged]=\"isVisible\">\n  <div class=\"header\">\n\n  </div>\n\n  season\n  <p-slider [(ngModel)]=\"val1\" [style]=\"{'width':'200px'}\"></p-slider>\n  light\n  <p-slider [(ngModel)]=\"val2\" [style]=\"{'width':'200px'}\"></p-slider>\n  price\n  <p-slider [(ngModel)]=\"val3\" [style]=\"{'width':'200px'}\"></p-slider>\n\n</div>\n"
+module.exports = "<div id=\"sideSlider\" ng-show=\"!collapsed\" [@visibilityChanged]=\"isVisible\">\n  <div class=\"header\"></div>\n\n  season\n  <p-slider [(ngModel)]=\"val1\" [style]=\"{'width':'100%'}\" [styleClass]=\"sideSlider\"></p-slider>\n  light\n  <p-slider [(ngModel)]=\"val2\" [style]=\"{'width':'100%'}\" [styleClass]=\"sideSlider\"></p-slider>\n  price\n  <p-slider [(ngModel)]=\"val3\" [style]=\"{'width':'100%'}\" [styleClass]=\"sideSlider\"></p-slider>\n\n</div>\n"
 
 /***/ }
 

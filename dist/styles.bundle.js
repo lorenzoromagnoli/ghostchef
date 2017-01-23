@@ -592,10 +592,10 @@ exports.push([module.i, "@charset \"UTF-8\";\n\nbody .ui-widget,\nbody .ui-widge
 
 exports = module.exports = __webpack_require__(126)();
 // imports
-
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Roboto);", ""]);
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n\nbody,h1,h2,h3,h4,h4,h6,\np, span{\n  font-family: 'Roboto', sans-serif;\n}\n\n\n\n.ui-slider{\n  background-color: #EFEDED !important;\n  height: 4px !important;\n  margin-bottom: 30px !important;\n  margin-top:10px !important;\n  border: none !important;\n}\n\n.ui-slider .ui-slider-handle{\n    height: 14px !important;\n    width: 14px !important;\n    background-color: #50E3C2 !important;\n    top: -5px !important;\n}\n\n\n#editor{\n  margin-top: 50px;\n}\n", ""]);
 
 // exports
 
