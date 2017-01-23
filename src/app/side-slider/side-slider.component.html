@@ -1,14 +1,11 @@
-
 <div id="sideSlider" ng-show="!collapsed" [@visibilityChanged]="isVisible">
-  <div class="header">
-
-  </div>
+  <div class="header"></div>
 
   season
-  <p-slider [(ngModel)]="val1" [style]="{'width':'200px'}"></p-slider>
+  <p-slider [(ngModel)]="val1" [style]="{'width':'100%'}" [styleClass]="sideSlider"></p-slider>
   light
-  <p-slider [(ngModel)]="val2" [style]="{'width':'200px'}"></p-slider>
+  <p-slider [(ngModel)]="val2" [style]="{'width':'100%'}" [styleClass]="sideSlider"></p-slider>
   price
-  <p-slider [(ngModel)]="val3" [style]="{'width':'200px'}"></p-slider>
+  <p-slider [(ngModel)]="val3" [style]="{'width':'100%'}" [styleClass]="sideSlider"></p-slider>
 
 </div>

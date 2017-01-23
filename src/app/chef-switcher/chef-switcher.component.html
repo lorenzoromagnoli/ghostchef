@@ -7,6 +7,9 @@
       </span>
     </div>
     <div class="chef" *ngFor="let chef of chefs; let i = index">
+      <span class="plus" *ngIf="chef.isActive">
+        +
+      </span>
       <span class="name bg-{{chef.color}}" *ngIf="chef.isActive">
         {{chef.name}}
       </span>

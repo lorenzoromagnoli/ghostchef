@@ -285,7 +285,7 @@ export class EditorComponent implements OnInit {
   addChef() {
     this.foodDataService.getAllFoods().then(data => {
       console.log("got data", data);
-      // this.foodData = JSON.parse(data);
+       this.foodData = JSON.parse(data);
     });
   }
 
