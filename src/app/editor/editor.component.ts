@@ -40,6 +40,12 @@ export class EditorComponent implements OnInit {
   }
 
 
+  mode="learning";
+
+  setMode(newMode){
+    this.mode=newMode;
+    console.log(newMode);
+  }
 
   author; //whos' the author?
   humanAuthor=new Chef("human", "white", "🇩🇰");

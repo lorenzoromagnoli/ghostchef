@@ -1,5 +1,4 @@
 <div class="chef-switcher row">
-
   <div class="active-chef-list">
     <div class="chef">
       <span class="name bg-teal">
@@ -17,14 +16,14 @@
     </div>
   </div>
 
-  <span class="addChef fa fa-plus fa-1x bigButton bg-teal" *ngIf="activeChef==null" (click)="$event.stopPropagation(); myDrop.open();"></span>
+  <span class="addChef fa fa-plus fa-1x bigButton bg-grey" *ngIf="activeChef==null" (click)="$event.stopPropagation(); myDrop.open();" ></span>
 
   <div ngbDropdown #myDrop="ngbDropdown" class="d-inline-block addChef-menu">
     <!-- <button class="btn btn-outline" id="dropdownMenu1" ngbDropdownToggle>Toggle dropdown</button> -->
     <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <button *ngFor="let chef of chefs; let i = index" class="dropdown-item bg-{{chef.color}}">
+      <button *ngFor="let chef of chefs; let i = index" class="dropdown-item bg-{{chef.color}}" (click)="chef.toggleActive()">
 
-        <div class="inner" (click)="chef.toggleActive()" [ngClass]="{'active': chef.isActive }">
+        <div class="inner" [ngClass]="{'active': chef.isActive }">
 
           <span class="icon">{{chef.nation}}</span>
 

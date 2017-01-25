@@ -16,24 +16,21 @@
 }
 
 .topBar.tools{
-  position: fixed;
-  margin-top: 40px;
   width: 100%;
   display: block;
   max-width: 970px;
+  margin-top: -36px;
 }
-
 
 .recordButton.bigButton{
   float: right;
-  margin-top: -45px;
+  padding-top: 10px;
 }
 
 .pauseButton.bigButton{
   float: right;
-  margin-top: -45px;
-  margin-right: 25px;
-
+  margin-top: -42px;
+  padding-top: 10px;
 
 }
 
@@ -88,7 +85,7 @@
       color: #aaa;
     }
 
-    
+
 
 
   }

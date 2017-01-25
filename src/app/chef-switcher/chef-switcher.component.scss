@@ -9,9 +9,9 @@ padding: 6px 8px;
 
 .addChef{
   float: right;
-  margin-top: -10px;
+  margin-top: -8px;
   margin-right: 0px;
-}
+  }
 
 .active-chef-list{
   display: inline-block;
@@ -20,7 +20,7 @@ padding: 6px 8px;
   .chef{
     display: inline-block;
     span{
-      height: 40px;
+      height: 36px;
       padding: 10px
     }
   }
@@ -34,10 +34,10 @@ padding: 6px 8px;
   float: right;
   min-width: 127px;
   padding: 0px;
-  top: 40px;
+  top: 36px;
 
   .dropdown-item{
-    height: 40px;
+    height: 36px;
     .inner{
       width: 100%;
       &.active{

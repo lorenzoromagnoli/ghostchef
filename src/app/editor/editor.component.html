@@ -2,28 +2,76 @@
 <div class="container">
   <div class="row">
     <div id="title">
-      <span class="em em-ghost"></span> <span class="em em-egg"></span>
-      <h1 >   Ghost Chef</h1>
-    </div>
-  </div>
+      <span class="em em-ghost"></span>
+      <span class="em em-egg"></span>
+      <h1>
+        Ghost Chef :
+      </h1>
 
-  <div class="row ">
+      <a href="#" (click)="$event.stopPropagation(); myDrop.open();" (mouseOver)="myDrop.open()" class="choseMode bg-grey">
+        <span *ngIf="activeChef==null" class="mono">{{this.mode}}()</span>
+        <span class="fa fa-plus fa-angle-down"></span>
+      </a>
+    </div>
+
+    <div ngbDropdown #myDrop="ngbDropdown" class="d-inline-block mode-menu">
+      <!-- <button class="btn btn-outline" id="dropdownMenu1" ngbDropdownToggle>Toggle dropdown</button> -->
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+        <button class="dropdown-item" (click)="setMode('co-writing')">
+          <div class="inner">
+            <span class="icon"></span>
+            <span class="name mono">
+              co-writing()
+            </span>
+          </div>
+        </button>
+
+        <button class="dropdown-item" (click)="setMode('learning')">
+          <div class="inner">
+            <span class="icon"></span>
+            <span class="name mono">
+              learning()
+            </span>
+          </div>
+        </button>
+
+        <button class="dropdown-item" (click)="setMode('generate-task')">
+          <div class="inner">
+            <span class="icon"></span>
+            <span class="name mono">
+              generate-task()
+            </span>
+          </div>
+        </button>
+
+        <button class="dropdown-item" (click)="setMode('n-plating')">
+          <div class="inner">
+            <span class="icon"></span>
+            <span class="name mono">
+              n-plating()
+            </span>
+          </div>
+        </button>
+      </div>
+    </div>
+
     <div class="topBar tools">
 
-  <app-chef-switcher (notify)='onChefNotify($event)'>
-    Loading...
-  </app-chef-switcher>
+      <app-chef-switcher (notify)='onChefNotify($event)' *ngIf="mode=='co-writing'">
+        Loading...
+      </app-chef-switcher>
 
-  <span class="pauseButton bigButton bg-pink" (click)="togglePause()">
-    <span class="fa fa-play fa-1x" [ngClass]="{'hidden': !isAiPaused }"></span>
-    <span class="fa fa-stop fa-1x" [ngClass]="{'hidden': isAiPaused }"></span>
-  </span>
+      <span class="pauseButton bigButton bg-grey" (click)="togglePause()" *ngIf="mode=='co-writing'">
+        <span class="fa fa-play fa-1x" [ngClass]="{'hidden': !isAiPaused }"></span>
+        <span class="fa fa-stop fa-1x" [ngClass]="{'hidden': isAiPaused }"></span>
+      </span>
 
-  <span class="recordButton bigButton bg-red" (click)="toggleRecording()" [ngClass]="{'faded': recordingAnimationStatus}">
-    <span class="fa fa-circle fa-1x" ></span>
-  </span>
+      <span class="recordButton bigButton bg-red" (click)="toggleRecording()" [ngClass]="{'faded': recordingAnimationStatus}" *ngIf="mode=='learning'">
+        <span class="fa fa-circle fa-1x"></span>
+      </span>
+    </div>
   </div>
-</div>
 
   <div class="row">
     <div id="editor" [@collapsedChanged]="isCollapsed" [ngClass]="{'fullWidth': fullWidth, 'collapsed': !fullWidth}">
@@ -50,30 +98,19 @@
                       'isNotRelated': higlightedWord!=-1 && wordsRelatedToHighlighted.indexOf(i)==-1 && i!=higlightedWord
                     }"
           (mouseover)="mouseOver($event, i)"
-          (mouseout)="mouseLeave($event, i)"
-
-            >{{word.word}}</span>
-            <sup class="apex">{{word.dependencyEdge}}</sup>
-            <sup class="apex">_{{word.dependencyType}}</sup>
+          (mouseout)="mouseLeave($event, i)">{{word.word}}</span>
+        <sup class="apex">{{word.dependencyEdge}}</sup>
+        <sup class="apex">_{{word.dependencyType}}</sup>
 
         <!-- <span class="autocomplete" [hidden]="i!=focussedWordPosition">{{word}}</span> -->
       </span>
     </div>
-
-
-
 
     <app-side-slider >
       Loading...
     </app-side-slider>
 
   </div>
-
-
-
-
-
-
 
   <div class="row controls">
     <span class="pauseButton" (click)="togglePause()">
@@ -82,20 +119,20 @@
       autopilot
     </span>
     <span class="analyzeText" (click)="understandSentence()">
-      <span class="fa fa-eyedropper fa-1x" ></span>
+      <span class="fa fa-eyedropper fa-1x"></span>
       analyze-text
     </span>
     <span class="addPreparation" (click)="addPreparation()">
-      <span class="fa fa-edit fa-1x" ></span>
+      <span class="fa fa-edit fa-1x"></span>
       add preparation
     </span>
     <span class="addIngredient" (click)="addIngredient()">
-      <span class="fa fa-edit fa-1x" ></span>
+      <span class="fa fa-edit fa-1x"></span>
       add ingredient
     </span>
 
     <span class="toggleSlider" (click)="toggleSlider()">
-      <span class="fa fa-sliders fa-1x" ></span>
+      <span class="fa fa-sliders fa-1x"></span>
       toggleSlider
     </span>
     <!-- {{focussedWordPosition}} -->

@@ -7,6 +7,10 @@ p, span{
   font-family: 'Roboto', sans-serif;
 }
 
+body.mono,h1.mono,h2.mono,h3.mono,h4.mono,h4.mono,h6.mono,
+p.mono, span.mono, .mono{
+  font-family: 'Roboto Mono', monospace;
+}
 
 
 .ui-slider{
@@ -25,19 +29,19 @@ p, span{
 }
 
 #editor{
-  margin-top: 130px;
+  margin-top: 40px;
 max-height: 300px;
 overflow: scroll;
 }
 
 .bigButton{
-  border-radius: 20px;
-      width: 20px;
-      height: 40px;
+  padding-right: 12px;
+    border-radius: 5px;
+      width: 36px;
+      height: 36px;
       color: #fff;
       padding-top: 12px;
-      padding-left: 5px;
-      padding-right: 5px;
+      padding-left: 13px;
 
 
       transition: opacity 1s;
@@ -62,6 +66,9 @@ overflow: scroll;
   background-color: #F6A623
 }
 
+.bg-grey{
+background-color: #D8D8D8
+}
 
 .faded{
   opacity: .5;
@@ -106,4 +113,41 @@ overflow: scroll;
 }
 .white.word{
   border-bottom: 2px solid  #ffffff !important;
+}
+
+.choseMode{
+  display: inline-block;
+  height: 36px;
+  padding: 8px;
+  color: #888888;
+  font-size: 12px;
+
+}
+
+
+
+.choseMode:hover, .choseMode:active {
+  color: #888888;
+  text-decoration: none;
+}
+
+.mode-menu{
+  position: absolute;
+  margin-top: 63px;
+margin-left: 172px;
+
+}
+
+.dropdown-menu{
+  border: none !important;
+    box-shadow: none !important;
+    background-color: #EFECEC !important;
+    border-radius: 0px !important;
+    font-size: 12px;
+    color: #888888;
+}
+
+.dropdown-item .name{
+  font-size: 12px;
+
 }
