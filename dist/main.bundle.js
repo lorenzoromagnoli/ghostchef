@@ -914,7 +914,7 @@ module.exports = "#title {\n  /* Ghost_Chef: */\n  color: #888;\n  font-family: 
 /***/ 839:
 /***/ function(module, exports) {
 
-module.exports = "#sideSlider{\n  max-width: 30%;\nfloat: right;\npadding-left: 40px;\nbackground-color: ;\nmargin: 130px 0;\n}\n"
+module.exports = "#sideSlider{\n  max-width: 30%;\nfloat: right;\npadding-left: 40px;\nbackground-color: ;\nmargin: 40px 0;\n}\n"
 
 /***/ },
 
@@ -928,7 +928,7 @@ module.exports = ""
 /***/ 841:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"chef-switcher row\">\n  <div class=\"active-chef-list\">\n    <div class=\"chef\">\n      <span class=\"name bg-teal\">\n        You\n      </span>\n    </div>\n    <div class=\"chef\" *ngFor=\"let chef of chefs; let i = index\">\n      <span class=\"plus\" *ngIf=\"chef.isActive\">\n        +\n      </span>\n      <span class=\"name bg-{{chef.color}}\" *ngIf=\"chef.isActive\" (click)=\"notifyChefClicked(chef)\">\n        {{chef.nation}}\n        {{chef.name}}\n      </span>\n    </div>\n  </div>\n\n  <span class=\"addChef fa fa-plus fa-1x bigButton bg-grey\" *ngIf=\"activeChef==null\" (click)=\"$event.stopPropagation(); myDrop.open();\" ></span>\n\n  <div ngbDropdown #myDrop=\"ngbDropdown\" class=\"d-inline-block addChef-menu\">\n    <!-- <button class=\"btn btn-outline\" id=\"dropdownMenu1\" ngbDropdownToggle>Toggle dropdown</button> -->\n    <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">\n      <button *ngFor=\"let chef of chefs; let i = index\" class=\"dropdown-item bg-{{chef.color}}\" (click)=\"chef.toggleActive()\">\n\n        <div class=\"inner\" [ngClass]=\"{'active': chef.isActive }\">\n\n          <span class=\"icon\">{{chef.nation}}</span>\n\n          <span class=\"name\">\n            {{chef.name}}\n          </span>\n\n        </div>\n\n      </button>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"chef-switcher row\">\n  <div class=\"active-chef-list\">\n    <div class=\"chef\">\n      <span class=\"name bg-teal mono controls\">\n        You\n      </span>\n    </div>\n    <div class=\"chef\" *ngFor=\"let chef of chefs; let i = index\">\n      <span class=\"plus\" *ngIf=\"chef.isActive\">\n        +\n      </span>\n      <span class=\"name bg-{{chef.color}} mono controls\" *ngIf=\"chef.isActive\" (click)=\"notifyChefClicked(chef)\">\n        {{chef.nation}}\n        {{chef.name}}\n      </span>\n    </div>\n  </div>\n\n  <span class=\"addChef fa fa-plus fa-1x bigButton bg-grey\" *ngIf=\"activeChef==null\" (click)=\"$event.stopPropagation(); myDrop.open();\" ></span>\n\n  <div ngbDropdown #myDrop=\"ngbDropdown\" class=\"d-inline-block addChef-menu\">\n    <!-- <button class=\"btn btn-outline\" id=\"dropdownMenu1\" ngbDropdownToggle>Toggle dropdown</button> -->\n    <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">\n      <button *ngFor=\"let chef of chefs; let i = index\" class=\"dropdown-item bg-{{chef.color}}\" (click)=\"chef.toggleActive()\">\n\n        <div class=\"inner\" [ngClass]=\"{'active': chef.isActive }\">\n\n          <span class=\"icon\">{{chef.nation}}</span>\n\n          <span class=\"name mono controls\">\n            {{chef.name}}\n          </span>\n\n        </div>\n\n      </button>\n    </div>\n  </div>\n</div>\n"
 
 /***/ },
 
@@ -942,7 +942,7 @@ module.exports = "<!-- <input (keyup)=\"onUpdate($event)\" (click)=\"onUpdate($e
 /***/ 843:
 /***/ function(module, exports) {
 
-module.exports = "<div id=\"sideSlider\" class=\"{{chefColor}}\" ng-show=\"!collapsed\" [@visibilityChanged]=\"isVisible\">\n  <div class=\"header\">\n    <h3>{{chefName}} {{chefnation}}</h3>\n    {{chefStyle}}\n  </div>\n\n\n  <div class=\"option\" *ngFor=\"let option of options; let i = index\">\n    {{option.key}}\n    <p-slider [(ngModel)]=\"option.value\" [style]=\"{'width':'100%'}\" [styleClass]=\"sideSlider\"></p-slider>\n  </div>\n\n</div>\n"
+module.exports = "<div id=\"sideSlider\" class=\"{{chefColor}}\" ng-show=\"!collapsed\" [@visibilityChanged]=\"isVisible\">\n  <div class=\"header\">\n    <h3 class=\"mono\">{{chefName}} {{chefnation}}</h3>\n    {{chefStyle}}\n  </div>\n\n\n  <div class=\"option controls mono\" *ngFor=\"let option of options; let i = index\">\n    {{option.key}}\n    <p-slider [(ngModel)]=\"option.value\" [style]=\"{'width':'100%'}\" [styleClass]=\"sideSlider\"></p-slider>\n  </div>\n\n</div>\n"
 
 /***/ }
 

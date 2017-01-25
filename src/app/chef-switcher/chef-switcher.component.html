@@ -1,7 +1,7 @@
 <div class="chef-switcher row">
   <div class="active-chef-list">
     <div class="chef">
-      <span class="name bg-teal">
+      <span class="name bg-teal mono controls">
         You
       </span>
     </div>
@@ -9,7 +9,7 @@
       <span class="plus" *ngIf="chef.isActive">
         +
       </span>
-      <span class="name bg-{{chef.color}}" *ngIf="chef.isActive" (click)="notifyChefClicked(chef)">
+      <span class="name bg-{{chef.color}} mono controls" *ngIf="chef.isActive" (click)="notifyChefClicked(chef)">
         {{chef.nation}}
         {{chef.name}}
       </span>
@@ -27,7 +27,7 @@
 
           <span class="icon">{{chef.nation}}</span>
 
-          <span class="name">
+          <span class="name mono controls">
             {{chef.name}}
           </span>
 

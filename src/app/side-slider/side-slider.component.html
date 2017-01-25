@@ -1,11 +1,11 @@
 <div id="sideSlider" class="{{chefColor}}" ng-show="!collapsed" [@visibilityChanged]="isVisible">
   <div class="header">
-    <h3>{{chefName}} {{chefnation}}</h3>
+    <h3 class="mono">{{chefName}} {{chefnation}}</h3>
     {{chefStyle}}
   </div>
 
 
-  <div class="option" *ngFor="let option of options; let i = index">
+  <div class="option controls mono" *ngFor="let option of options; let i = index">
     {{option.key}}
     <p-slider [(ngModel)]="option.value" [style]="{'width':'100%'}" [styleClass]="sideSlider"></p-slider>
   </div>

@@ -4,7 +4,8 @@
 
 body,h1,h2,h3,h4,h4,h6,
 p, span{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Mono', monospace;
+
 }
 
 body.mono,h1.mono,h2.mono,h3.mono,h4.mono,h4.mono,h6.mono,
@@ -150,4 +151,9 @@ margin-left: 172px;
 .dropdown-item .name{
   font-size: 12px;
 
+}
+
+
+.controls{
+  font-size: 12px;
 }
