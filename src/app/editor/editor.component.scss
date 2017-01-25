@@ -19,14 +19,20 @@
   width: 100%;
   display: block;
   max-width: 970px;
-  margin-top: -36px;
+  margin-top: -6px;
+
 }
 
 .recordButton.bigButton{
   float: right;
   padding-top: 10px;
 }
-
+.placeholder.bigButton{
+    float: right;
+    padding-top: 10px;
+    margin-top: 0px;
+    width: 0px;
+}
 .pauseButton.bigButton{
   float: right;
   margin-top: -42px;

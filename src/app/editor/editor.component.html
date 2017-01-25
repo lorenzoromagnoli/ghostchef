@@ -12,6 +12,49 @@
         <span *ngIf="activeChef==null" class="mono">{{this.mode}}()</span>
         <span class="fa fa-plus fa-angle-down"></span>
       </a>
+
+      <div ngbDropdown #myDrop="ngbDropdown" class="d-inline-block mode-menu">
+        <!-- <button class="btn btn-outline" id="dropdownMenu1" ngbDropdownToggle>Toggle dropdown</button> -->
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+          <button class="dropdown-item" (click)="setMode('co-writing')">
+            <div class="inner">
+              <span class="icon"></span>
+              <span class="name mono">
+                co-writing()
+              </span>
+            </div>
+          </button>
+
+          <button class="dropdown-item" (click)="setMode('learning')">
+            <div class="inner">
+              <span class="icon"></span>
+              <span class="name mono">
+                learning()
+              </span>
+            </div>
+          </button>
+
+          <button class="dropdown-item" (click)="setMode('generate-task')">
+            <div class="inner">
+              <span class="icon"></span>
+              <span class="name mono">
+                generate-task()
+              </span>
+            </div>
+          </button>
+
+          <button class="dropdown-item" (click)="setMode('n-plating')">
+            <div class="inner">
+              <span class="icon"></span>
+              <span class="name mono">
+                n-plating()
+              </span>
+            </div>
+          </button>
+        </div>
+      </div>
+
     </div>
 
     <div ngbDropdown #myDrop="ngbDropdown" class="d-inline-block mode-menu">
@@ -62,6 +105,10 @@
         Loading...
       </app-chef-switcher>
 
+      <span class="placeholder bigButton bg-red fadeOut" *ngIf="mode=='n-plating'">
+        <span class="fa fa-circle fa-1x"></span>
+      </span>
+
       <span class="pauseButton bigButton bg-grey" (click)="togglePause()" *ngIf="mode=='co-writing'">
         <span class="fa fa-play fa-1x" [ngClass]="{'hidden': !isAiPaused }"></span>
         <span class="fa fa-stop fa-1x" [ngClass]="{'hidden': isAiPaused }"></span>
@@ -70,6 +117,9 @@
       <span class="recordButton bigButton bg-red" (click)="toggleRecording()" [ngClass]="{'faded': recordingAnimationStatus}" *ngIf="mode=='learning'">
         <span class="fa fa-circle fa-1x"></span>
       </span>
+
+
+
     </div>
   </div>
 
@@ -109,10 +159,14 @@
     <app-side-slider >
       Loading...
     </app-side-slider>
-
   </div>
 
-  <div class="row controls">
+  <div class="row plating"  [ngClass]="{'fadeOut':mode!='n-plating'}">
+
+    <img src="assets/images/plating.png">
+  </div>
+
+  <div class="row controls hidden">
     <span class="pauseButton" (click)="togglePause()">
       <span class="fa fa-play fa-1x" [ngClass]="{'hidden': !isAiPaused }"></span>
       <span class="fa fa-stop fa-1x" [ngClass]="{'hidden': isAiPaused }"></span>
