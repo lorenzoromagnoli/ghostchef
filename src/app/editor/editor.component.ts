@@ -219,7 +219,7 @@ export class EditorComponent implements OnInit {
     if (this.isAiPaused) {
     } else {
       //try to understand the sentence
-      this.understandSentence();
+      //this.understandSentence();
       //this.addAWord("ingredient", "ingredient", this.author, getRandom(0, 3));
     }
   }

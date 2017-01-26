@@ -28,13 +28,12 @@ export class ChefSwitcherComponent implements OnInit {
     this.chefs=[];
 
     var thomas=new Chef("Thomas", "green", "🇩🇰");
-    thomas.style="thomas likes to cook healthy food"
+    thomas.style="…my style would be, i guess organic, I see a thing like a weather or a culture I start from there and i make stuff up as I go."
 
     thomas.addVariable("local",23);
-    thomas.addVariable("fair",54);
-    thomas.addVariable("cheap",63);
-    thomas.addVariable("organic",18);
-
+    thomas.addVariable("seasonal",54);
+    thomas.addVariable("quick",63);
+    thomas.addVariable("healthy", 18);
     this.chefs.push(thomas);
 
     var kae=new Chef("Kae", "yellow", "🇯🇵");
